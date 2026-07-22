@@ -95,6 +95,17 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
  </div>
  <div class="callout" id="kidsCallout"></div>
 
+ <!-- PRIMEIRA VEZ & DECISÕES -->
+ <h2><span class="b"></span>Primeira vez & Decisões</h2>
+ <div class="hint">Quantos vieram pela 1ª vez (Boas-vindas) e quantos aceitaram Jesus, por domingo — só quantidades.</div>
+ <div class="grid3">
+   <div class="card"><div class="chartbox"><canvas id="funilChart"></canvas></div>
+     <div class="legend"><span><span class="dot" style="background:var(--gold)"></span>Primeira vez</span>
+     <span><span class="dot" style="background:var(--kids)"></span>Aceitou Jesus</span></div></div>
+   <div class="card"><div class="chartbox"><canvas id="pvRateChart"></canvas></div></div>
+ </div>
+ <div class="callout" id="funilCallout" style="background:linear-gradient(135deg,rgba(255,207,92,.1),rgba(56,193,114,.08))"></div>
+
  <h2><span class="b"></span>Clima × culto da manhã (9h)</h2>
  <div class="hint">O culto das 9h é o mais sensível ao tempo.</div>
  <div class="grid2"><div class="card"><div class="chartbox sm"><canvas id="wx9Chart"></canvas></div></div>
@@ -153,6 +164,7 @@ async function boot(){
   [fmt(max.total),'Maior domingo · '+max.label],[fmt(min.total),'Menor domingo · '+min.label]];
  if(kd.length){cards.push([fmt(grand+grandKids),'Total geral (adultos + Kids)']);cards.push([String(familiaAvg).replace('.',','),'Crianças por 100 adultos']);}
  else cards.push(['+0,69','Corr. temp × 9h']);
+ const _fv=DATA.filter(d=>'pv' in d); if(_fv.length)cards.push([fmt(_fv.reduce((s,d)=>s+d.pv,0)),'Primeiras visitas (período)']);
  document.getElementById('kpis').innerHTML=cards.map(k=>`<div class="kpi"><div class="v">${k[0]}</div><div class="l">${k[1]}</div></div>`).join('');
  document.getElementById('tag').textContent=DATA.length+' domingos · '+DATA[0].label+' a '+DATA[DATA.length-1].label;
 
@@ -163,7 +175,7 @@ async function boot(){
    backgroundColor:x=>{const g=x.chart.ctx.createLinearGradient(0,0,0,340);g.addColorStop(0,'rgba(255,106,43,.28)');g.addColorStop(1,'rgba(255,106,43,0)');return g;},
    pointBackgroundColor:pc('all'),pointBorderColor:'#0f1113',pointRadius:pr('all'),pointHoverRadius:9}]},
    options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:i=>'Domingo '+i[0].label,label:i=>'  '+fmt(i.raw)+' pessoas',
-     afterBody:i=>{const d=DATA[i[0].dataIndex],w=(d.wx||{})['9']||{};let a=['Local: '+d.venue];if(d.kids)a.push('👦 Kids: '+fmt(d.kids)+' ('+d.familia+'/100)');if(w.temp!=null)a.push('Manhã 9h: '+ICON[w.cond]+' '+w.cond+' '+w.temp+'°');
+     afterBody:i=>{const d=DATA[i[0].dataIndex],w=(d.wx||{})['9']||{};let a=['Local: '+d.venue];if(d.kids)a.push('👦 Kids: '+fmt(d.kids)+' ('+d.familia+'/100)');if('pv' in d)a.push('🙋 1ª vez: '+fmt(d.pv));if('aj' in d)a.push('🙏 Decisões: '+fmt(d.aj));if(w.temp!=null)a.push('Manhã 9h: '+ICON[w.cond]+' '+w.cond+' '+w.temp+'°');
        if(d.holiday)a.push('🎉 '+d.holiday);if(d.wc)a.push('⚽ '+d.wc);if(d.note)a.push('📝 '+d.note);return a;}}}},
    scales:{y:{grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
  document.querySelectorAll('#lineCtrl .btn').forEach(b=>b.onclick=()=>{document.querySelectorAll('#lineCtrl .btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');line.data.datasets[0].pointBackgroundColor=pc(b.dataset.f);line.data.datasets[0].pointRadius=pr(b.dataset.f);line.update();});
@@ -190,6 +202,23 @@ async function boot(){
    const kidsTot=kd.reduce((s,d)=>s+d.kids,0);
    const hi=kd.reduce((a,b)=>b.familia>a.familia?b:a);
    document.getElementById('kidsCallout').innerHTML='<b>'+fmt(kidsTot)+'</b> presenças de crianças no período, média de <b>'+familiaAvg.toString().replace('.',',')+' crianças para cada 100 adultos</b>. Curioso: nos domingos de menor público (Copa, frio) o índice de família SOBE (ex.: '+hi.label+' = '+hi.familia+'/100) — famílias com crianças resistem mais que o público adulto.';
+ }
+
+ // ---- PRIMEIRA VEZ & DECISÕES ----
+ const fv=DATA.filter(d=>'pv' in d);
+ if(fv.length){
+   new Chart(funilChart,{type:'bar',data:{labels,datasets:[
+     {label:'Primeira vez',data:DATA.map(d=>('pv' in d)?d.pv:null),backgroundColor:C.gold,borderRadius:6},
+     {label:'Aceitou Jesus',data:DATA.map(d=>('aj' in d)?d.aj:null),backgroundColor:C.kids,borderRadius:6}]},
+     options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'1ªs visitas e decisões por domingo',color:C.mut},tooltip:{callbacks:{label:i=>i.dataset.label+': '+(i.raw==null?'sem dado':fmt(i.raw))}}},
+       scales:{y:{beginAtZero:true,grid:{color:C.line}},x:{grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}}}}});
+   new Chart(pvRateChart,{type:'line',data:{labels,datasets:[{data:DATA.map(d=>('pv' in d)?Math.round(1000*d.pv/d.total)/10:null),borderColor:C.gold,borderWidth:2,tension:.3,pointRadius:3,spanGaps:true,
+     backgroundColor:x=>{const g=x.chart.ctx.createLinearGradient(0,0,0,270);g.addColorStop(0,'rgba(255,207,92,.25)');g.addColorStop(1,'rgba(255,207,92,0)');return g;},fill:true}]},
+     options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Primeiras visitas por 100 presentes',color:C.mut},tooltip:{callbacks:{label:i=>String(i.raw).replace('.',',')+' por 100'}}},scales:{y:{beginAtZero:true,grid:{color:C.line}},x:{grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}}}}});
+   const totPv=fv.reduce((s,d)=>s+d.pv,0);
+   const ajw=DATA.filter(d=>'aj' in d); const totAj=ajw.reduce((s,d)=>s+d.aj,0); const pvAjw=ajw.reduce((s,d)=>s+(d.pv||0),0);
+   const pubTot=DATA.reduce((s,d)=>s+d.total,0);
+   document.getElementById('funilCallout').innerHTML='<b style="color:var(--gold)">'+fmt(totPv)+'</b> primeiras visitas no período ('+(100*totPv/pubTot).toFixed(1).replace('.',',')+'% do público total). <b style="color:var(--kids)">'+fmt(totAj)+'</b> decisões registradas — cerca de <b>'+Math.round(100*totAj/pvAjw)+' por 100 primeiras visitas</b> nas semanas com dado. Obs.: "Aceitou Jesus" só tem dados até 22/fev; quando vier o período completo, o painel atualiza sozinho.';
  }
 
  // ---- clima 9h ----
@@ -249,6 +278,7 @@ async function boot(){
  if(tv.length&&cv.length)ins.push(['🏟️ O local pesa muito','Teatro: média <span class="em">'+fmt(mean(tv.map(d=>d.total)))+'</span>/domingo; Centro de Eventos: <span class="em">'+fmt(mean(cv.map(d=>d.total)))+'</span>.']);
  if(g9['Sol/Parcial'])ins.push(['🌡️ Frio/nublado esvazia o 9h','9h: sol <span class="em">'+fmt(g9['Sol/Parcial'])+'</span>, chuva <span class="em">'+fmt(g9['Chuva/Garoa']||0)+'</span>, nublado <span class="em">'+fmt(g9['Nublado']||0)+'</span>.']);
  if(kd.length)ins.push(['👦 Famílias resistem mais','Média de <span class="em">'+familiaAvg.toString().replace('.',',')+' crianças/100 adultos</span>. Em dias de Copa/frio o índice sobe — a queda é maior entre adultos.']);
+ if(fv.length)ins.push(['🙋 Primeira vez','<span class="em">'+fmt(fv.reduce((s,d)=>s+d.pv,0))+'</span> primeiras visitas no período (~<span class="em">'+(100*fv.reduce((s,d)=>s+d.pv,0)/DATA.reduce((s,d)=>s+d.total,0)).toFixed(1).replace('.',',')+'%</span> do público). A maior origem é o convite de membro.']);
  ins.push(['📈 Maior e menor','Maior: <span class="em">'+max.label+' ('+fmt(max.total)+')</span>. Menor: <span class="em">'+min.label+' ('+fmt(min.total)+')</span>'+(min.wc?' — '+min.wc:'')+'.']);
  document.getElementById('insights').innerHTML=ins.map(c=>`<div class="ins"><h3>${c[0]}</h3><p>${c[1]}</p></div>`).join('');
  document.getElementById('foot').innerHTML='Dados: contagem "BC Contagem 2026" + presença Kids · clima Open-Meteo (ERA5) · atualiza sozinho ao recarregar.';

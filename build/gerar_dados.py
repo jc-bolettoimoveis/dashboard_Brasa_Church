@@ -133,7 +133,7 @@ def buscar_clima(datas):
     return wx
 
 # ------- 4. montar dados.json -------
-def montar(base, wx, fatores, kids):
+def montar(base, wx, fatores, kids, funil):
     F = fatores
     dados = []
     for r in base:
@@ -151,6 +151,10 @@ def montar(base, wx, fatores, kids):
         if k and k.get('total', 0) > 0:
             row["kids"] = k['total']; row["kidsHour"] = k.get('byhour', {}); row["kidsVis"] = k.get('vis', 0)
             row["familia"] = round(100 * k['total'] / r['total'], 1) if r['total'] else None
+        fu = funil.get(d)
+        if fu:
+            if fu.get('pv') is not None: row["pv"] = fu['pv']   # primeira vez (Boas-vindas)
+            if fu.get('aj') is not None: row["aj"] = fu['aj']   # aceitou Jesus
         dados.append(row)
     return dados
 
@@ -171,7 +175,11 @@ def main():
     kpath = os.path.join(AQUI, "kids.json")   # presenca do Kids (contagens, sem dado pessoal)
     if os.path.exists(kpath):
         kids = json.load(open(kpath, encoding="utf-8"))
-    dados = montar(base, wx, fatores, kids)
+    funil = {}
+    fupath = os.path.join(AQUI, "funil.json")  # primeira vez / aceitou Jesus (so quantidades)
+    if os.path.exists(fupath):
+        funil = json.load(open(fupath, encoding="utf-8"))
+    dados = montar(base, wx, fatores, kids, funil)
     with open(SAIDA, "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=1)
     print("OK: dados.json com %d domingos, total %d pessoas." %
