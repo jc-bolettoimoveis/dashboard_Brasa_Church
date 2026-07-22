@@ -6,12 +6,9 @@
 <title>Dashboard · Contagem de Cultos 2026 — Brasa Church</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{
- --bg:#0f1113; --panel:#181b1f; --panel2:#1f2329; --line:#2b3038;
- --txt:#f2efe9; --mut:#9aa1ab; --ember:#ff6a2b; --ember2:#ff9d4d; --gold:#ffcf5c;
- --red:#e3452f; --teatro:#ff6a2b; --centro:#4aa3ff; --grad:linear-gradient(135deg,#ff6a2b,#ffcf5c);
- --sol:#ffcf5c; --nub:#8a94a3; --chuva:#4aa3ff;
-}
+:root{--bg:#0f1113;--panel:#181b1f;--panel2:#1f2329;--line:#2b3038;--txt:#f2efe9;--mut:#9aa1ab;
+--ember:#ff6a2b;--ember2:#ff9d4d;--gold:#ffcf5c;--red:#e3452f;--teatro:#ff6a2b;--centro:#4aa3ff;
+--grad:linear-gradient(135deg,#ff6a2b,#ffcf5c);--sol:#ffcf5c;--nub:#8a94a3;--chuva:#4aa3ff;--kids:#38c172;}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.5;padding:0 0 60px}
 .wrap{max-width:1240px;margin:0 auto;padding:0 20px}
@@ -28,301 +25,220 @@ h2 .b{width:8px;height:20px;background:var(--grad);border-radius:3px}
 .kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
 .kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--grad)}
 .kpi .v{font-size:28px;font-weight:800;letter-spacing:-1px}
-.kpi .l{color:var(--mut);font-size:12.5px;margin-top:2px}
-.kpi .s{font-size:12px;color:var(--ember2);margin-top:6px;font-weight:600}
+.kpi .l{color:var(--mut);font-size:12.5px;margin-top:2px}.kpi .s{font-size:12px;color:var(--ember2);margin-top:6px;font-weight:600}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:14px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.grid3{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
 @media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
-canvas{max-width:100%}
-.chartbox{position:relative;height:340px}
-.chartbox.sm{height:280px}
+canvas{max-width:100%}.chartbox{position:relative;height:340px}.chartbox.sm{height:280px}
 .controls{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
-.btn{background:var(--panel2);border:1px solid var(--line);color:var(--txt);font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:20px;cursor:pointer;transition:.15s}
-.btn:hover{border-color:var(--ember)}
+.btn{background:var(--panel2);border:1px solid var(--line);color:var(--txt);font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:20px;cursor:pointer}
 .btn.active{background:var(--grad);color:#1a0f07;border-color:transparent}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--mut);margin-top:10px}
 .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle}
 .heat{overflow-x:auto}
 table.ht{border-collapse:collapse;width:100%;font-size:12px;min-width:640px}
 table.ht th,table.ht td{padding:6px 4px;text-align:center;border:1px solid var(--bg)}
-table.ht th{color:var(--mut);font-weight:600}
-table.ht td.hlabel{color:var(--mut);text-align:right;padding-right:9px;white-space:nowrap;font-weight:600}
+table.ht th{color:var(--mut);font-weight:600}table.ht td.hlabel{color:var(--mut);text-align:right;padding-right:9px;white-space:nowrap;font-weight:600}
 .ftable{overflow-x:auto}
 table.f{border-collapse:collapse;width:100%;font-size:13px;min-width:820px}
 table.f th{background:var(--panel2);color:var(--mut);font-weight:600;text-align:left;padding:10px 12px;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
 table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
-table.f tr:hover td{background:var(--panel2)}
 .badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;margin:1px 2px 1px 0;white-space:nowrap}
 .bg-h{background:rgba(255,207,92,.15);color:var(--gold);border:1px solid rgba(255,207,92,.35)}
 .bg-w{background:rgba(227,69,47,.15);color:#ff8a72;border:1px solid rgba(227,69,47,.35)}
-.vpill{font-weight:700;font-size:12px;padding:2px 9px;border-radius:6px}
-.vt{background:rgba(255,106,43,.16);color:var(--ember2)}
-.vc{background:rgba(74,163,255,.16);color:#8cc4ff}
-.tnum{font-weight:800;font-size:15px}
-.wx{font-size:12px;line-height:1.35}
+.vpill{font-weight:700;font-size:12px;padding:2px 9px;border-radius:6px}.vt{background:rgba(255,106,43,.16);color:var(--ember2)}.vc{background:rgba(74,163,255,.16);color:#8cc4ff}
+.tnum{font-weight:800;font-size:15px}.wx{font-size:12px;line-height:1.35}
 .insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:6px}
 .ins{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--ember);border-radius:12px;padding:15px 17px}
-.ins h3{font-size:14.5px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
-.ins p{font-size:13px;color:#cfd4db}
-.ins .em{color:var(--ember2);font-weight:700}
+.ins h3{font-size:14.5px;margin-bottom:6px}.ins p{font-size:13px;color:#cfd4db}.ins .em{color:var(--ember2);font-weight:700}
+.callout{background:linear-gradient(135deg,rgba(56,193,114,.1),rgba(255,106,43,.08));border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-top:14px;font-size:14px}
+.callout b{color:var(--kids)}
 .foot{color:var(--mut);font-size:12px;margin-top:34px;border-top:1px solid var(--line);padding-top:16px}
-.callout{background:linear-gradient(135deg,rgba(74,163,255,.1),rgba(255,106,43,.08));border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-top:14px;font-size:14px}
-.callout b{color:var(--ember2)}
+#status{max-width:1240px;margin:16px auto;padding:14px 20px;border-radius:12px;background:var(--panel);border:1px solid var(--line);color:var(--mut);font-size:14px}
 </style>
 </head>
 <body>
-<header>
- <div class="wrap">
-  <div class="brandrow">
-   <div class="flame">🔥</div>
-   <div>
-     <h1>Contagem de Cultos · Brasa Church</h1>
-     <div class="sub">Porto Alegre — RS · Ano de 2026 · público, clima por horário e fatores de influência</div>
-   </div>
-  </div>
-  <span class="tag">24 domingos · 04/jan a 12/jul de 2026 · clima hora a hora (temp, sensação, vento, chuva)</span>
-  <div class="kpis" id="kpis">Carregando dados...</div>
- </div>
-</header>
-
-<div class="wrap">
+<header><div class="wrap">
+  <div class="brandrow"><div class="flame">🔥</div>
+   <div><h1>Contagem de Cultos · Brasa Church</h1>
+     <div class="sub">Porto Alegre — RS · Ano de 2026 · público, Kids, clima por horário e fatores</div></div></div>
+  <span class="tag" id="tag">carregando…</span>
+  <div class="kpis" id="kpis"></div>
+</div></header>
+<div id="status">Carregando dados…</div>
+<div class="wrap" id="app" style="display:none">
 
  <h2><span class="b"></span>Evolução do público por domingo</h2>
- <div class="hint">Total do dia somando todos os cultos. Cor do ponto = local. Passe o mouse para ver clima e fatores de cada data.</div>
- <div class="card">
-   <div class="controls" id="lineCtrl">
-     <button class="btn active" data-f="all">Todos os fatores</button>
-     <button class="btn" data-f="holiday">Feriadões</button>
-     <button class="btn" data-f="wc">Copa do Mundo</button>
-     <button class="btn" data-f="centro">Local (Centro de Eventos)</button>
-   </div>
+ <div class="hint">Total do dia somando todos os cultos. Cor do ponto = local. Passe o mouse para ver clima e fatores.</div>
+ <div class="card"><div class="controls" id="lineCtrl">
+   <button class="btn active" data-f="all">Todos os fatores</button><button class="btn" data-f="holiday">Feriadões</button>
+   <button class="btn" data-f="wc">Copa do Mundo</button><button class="btn" data-f="centro">Centro de Eventos</button></div>
    <div class="chartbox"><canvas id="lineChart"></canvas></div>
-   <div class="legend">
-     <span><span class="dot" style="background:var(--teatro)"></span>Teatro (principal)</span>
-     <span><span class="dot" style="background:var(--centro)"></span>Centro de Eventos (menor)</span>
-     <span><span class="dot" style="background:var(--gold)"></span>Feriadão</span>
-     <span><span class="dot" style="background:var(--red)"></span>Impacto Copa</span>
-   </div>
+   <div class="legend"><span><span class="dot" style="background:var(--teatro)"></span>Teatro</span>
+   <span><span class="dot" style="background:var(--centro)"></span>Centro de Eventos</span>
+   <span><span class="dot" style="background:var(--gold)"></span>Feriadão</span>
+   <span><span class="dot" style="background:var(--red)"></span>Copa</span></div></div>
+
+ <!-- KIDS -->
+ <h2><span class="b"></span>Kids · presença de crianças</h2>
+ <div class="hint">Crianças por domingo e o "índice de família" (crianças para cada 100 adultos).</div>
+ <div class="grid3">
+   <div class="card"><div class="chartbox"><canvas id="kidsChart"></canvas></div></div>
+   <div class="card"><div class="chartbox"><canvas id="kidsHourChart"></canvas></div></div>
  </div>
+ <div class="callout" id="kidsCallout"></div>
 
  <h2><span class="b"></span>Clima × culto da manhã (9h)</h2>
- <div class="hint">Confirmando a hipótese: o culto das 9h é o mais sensível ao tempo. Média de público por condição do céu às 9h.</div>
- <div class="grid2">
-   <div class="card"><div class="chartbox sm"><canvas id="wx9Chart"></canvas></div></div>
-   <div class="card"><div class="chartbox sm"><canvas id="scatterChart"></canvas></div></div>
- </div>
- <div class="callout" id="wxCallout"></div>
+ <div class="hint">O culto das 9h é o mais sensível ao tempo.</div>
+ <div class="grid2"><div class="card"><div class="chartbox sm"><canvas id="wx9Chart"></canvas></div></div>
+   <div class="card"><div class="chartbox sm"><canvas id="scatterChart"></canvas></div></div></div>
+ <div class="callout" id="wxCallout" style="background:linear-gradient(135deg,rgba(74,163,255,.1),rgba(255,106,43,.08))"></div>
 
  <h2><span class="b"></span>Sensibilidade ao clima por horário</h2>
- <div class="hint">Diferença de público entre domingos de céu limpo/parcial e domingos frios/nublados/chuvosos, para cada culto.</div>
  <div class="card"><div class="chartbox"><canvas id="sensChart"></canvas></div>
-   <div class="legend">
-     <span><span class="dot" style="background:var(--sol)"></span>Sol / Parcial</span>
-     <span><span class="dot" style="background:var(--nub)"></span>Nublado (geralmente frio)</span>
-     <span><span class="dot" style="background:var(--chuva)"></span>Chuva / Garoa</span>
-   </div>
- </div>
+   <div class="legend"><span><span class="dot" style="background:var(--sol)"></span>Sol/Parcial</span>
+   <span><span class="dot" style="background:var(--nub)"></span>Nublado</span>
+   <span><span class="dot" style="background:var(--chuva)"></span>Chuva/Garoa</span></div></div>
 
- <div class="grid2">
-   <div>
-     <h2><span class="b"></span>Média por local</h2>
-     <div class="hint">O local muda a capacidade — não necessariamente a demanda.</div>
-     <div class="card"><div class="chartbox sm"><canvas id="venueChart"></canvas></div></div>
-   </div>
-   <div>
-     <h2><span class="b"></span>Média por horário de culto</h2>
-     <div class="hint">Qual culto reúne mais gente, na média do ano.</div>
-     <div class="card"><div class="chartbox sm"><canvas id="hourChart"></canvas></div></div>
-   </div>
- </div>
-
- <div class="grid3">
-   <div>
-     <h2><span class="b"></span>Composição por horário</h2>
-     <div class="hint">Como cada culto contribui para o total de cada domingo.</div>
-     <div class="card"><div class="chartbox"><canvas id="stackChart"></canvas></div></div>
-   </div>
-   <div>
-     <h2><span class="b"></span>Média mensal</h2>
-     <div class="hint">Público médio por domingo em cada mês.</div>
-     <div class="card"><div class="chartbox"><canvas id="monthChart"></canvas></div></div>
-   </div>
- </div>
+ <div class="grid2"><div><h2><span class="b"></span>Média por local</h2><div class="card"><div class="chartbox sm"><canvas id="venueChart"></canvas></div></div></div>
+   <div><h2><span class="b"></span>Média por horário</h2><div class="card"><div class="chartbox sm"><canvas id="hourChart"></canvas></div></div></div></div>
+ <div class="grid3"><div><h2><span class="b"></span>Composição por horário</h2><div class="card"><div class="chartbox"><canvas id="stackChart"></canvas></div></div></div>
+   <div><h2><span class="b"></span>Média mensal</h2><div class="card"><div class="chartbox"><canvas id="monthChart"></canvas></div></div></div></div>
 
  <h2><span class="b"></span>Mapa de calor · domingo × horário</h2>
- <div class="hint">Tons mais quentes = mais pessoas. Passe o mouse para ver o clima daquele horário. Vazio = culto não registrado.</div>
+ <div class="hint">Tons quentes = mais gente. Passe o mouse para ver o clima.</div>
  <div class="card heat"><div id="heatmap"></div></div>
 
- <h2><span class="b"></span>Tabela completa · público, clima e fatores</h2>
- <div class="hint">Cada domingo com o clima da manhã (9h) e os fatores externos. Filtre por fator.</div>
- <div class="card">
-   <div class="controls">
-     <span style="color:var(--mut);font-size:12.5px;align-self:center">Filtrar:</span>
-     <button class="btn active" data-t="all">Todos</button>
-     <button class="btn" data-t="holiday">Feriadão</button>
-     <button class="btn" data-t="wc">Copa</button>
-     <button class="btn" data-t="centro">Centro de Eventos</button>
-     <button class="btn" data-t="rain">Manhã de chuva/nublado</button>
-   </div>
-   <div class="ftable"><table class="f" id="ftable">
-     <thead><tr><th>Data</th><th>Local</th><th>Total</th><th>9h</th><th>Clima 9h</th><th>Feriado</th><th>Copa</th><th>Obs.</th></tr></thead>
-     <tbody id="fbody"></tbody>
-   </table></div>
- </div>
+ <h2><span class="b"></span>Tabela completa</h2>
+ <div class="card"><div class="controls">
+   <button class="btn active" data-t="all">Todos</button><button class="btn" data-t="holiday">Feriadão</button>
+   <button class="btn" data-t="wc">Copa</button><button class="btn" data-t="centro">Centro</button>
+   <button class="btn" data-t="rain">Manhã fria/chuva</button></div>
+   <div class="ftable"><table class="f"><thead><tr><th>Data</th><th>Local</th><th>Total</th><th>Kids</th><th>9h</th><th>Clima 9h</th><th>Feriado</th><th>Copa</th></tr></thead><tbody id="fbody"></tbody></table></div></div>
 
- <h2><span class="b"></span>Principais leituras dos números</h2>
- <div class="insights">
-   <div class="ins"><h3>🌡️ Frio e nublado esvaziam o 9h</h3><p>No culto das <span class="em">9h</span>: manhãs de sol/parcial reúnem <span class="em">883</span> em média; caindo para <span class="em">750</span> na chuva e <span class="em">649</span> em manhãs nubladas e frias. A correlação entre temperatura da manhã e público das 9h é <span class="em">+0,69</span> — forte.</p></div>
-   <div class="ins"><h3>🥶 Sensação térmica e vento (minuano)</h3><p>A manhã mais gelada foi o <span class="em">Dia das Mães (10/mai)</span>: sensação de <span class="em">6,7°C</span> às 9h com vento de <span class="em">21 km/h</span>. Em 12/jul o vento sul também apertou (rajadas passando de 20 km/h à tarde). Vento + umidade alta amplificam o "frio sentido" que segura o público matinal.</p></div>
-   <div class="ins"><h3>🕚 11h e tarde resistem melhor</h3><p>O <span class="em">11h</span> quase não muda com o tempo (1.033 no sol vs 970 no nublado) e o <span class="em">20h</span> é praticamente indiferente à nuvem. Quem decide na hora de acordar (9h) é o mais afetado pelo frio/chuva.</p></div>
-   <div class="ins"><h3>🏟️ O local é o maior fator isolado</h3><p>Teatro: média <span class="em">4.386</span>/domingo. Centro de Eventos (5 domingos): <span class="em">3.130</span> (−29%). Boa parte é <span class="em">capacidade menor</span>, não perda de público.</p></div>
-   <div class="ins"><h3>⚽ Copa derrubou 5/jul</h3><p>Menor dia do ano (<span class="em">2.871</span>): Brasil eliminado pela Noruega às 17h; cultos 18h/20h não registrados. Frio de 11–15°C e céu encoberto no dia também pesaram.</p></div>
-   <div class="ins"><h3>🎉 Carnaval e Dia das Mães</h3><p>Sem registro em <span class="em">15/fev</span> (Carnaval). <span class="em">10/mai</span> (Dia das Mães) foi o menor domingo cheio — data de família, Centro de Eventos e manhã de 10–13°C.</p></div>
-   <div class="ins"><h3>📈 Pico com tempo bom</h3><p>Maior domingo: <span class="em">22/fev</span> (5.815), manhã de sol e ~24°C. Verão (jan/fev), mesmo nas férias, concentra os maiores públicos graças ao clima.</p></div>
- </div>
-
- <div class="foot">
-   <b>Fontes:</b> contagem interna Brasa Church ("BC Contagem 2026"); clima histórico hora a hora de Porto Alegre (Open-Meteo, reanálise ERA5); feriados nacionais 2026; tabela da Copa do Mundo FIFA 2026.<br>
-   <b>Clima por horário:</b> temperatura, sensação térmica, vento, umidade, chuva (mm) e nuvens nos horários de cada culto (9h, 11h, 16h, 18h, 20h). Condição: Sol (&lt;30% nuvem), Parcial (30–70%), Nublado (&gt;70%), Garoa (0,1–0,4 mm), Chuva (≥0,4 mm).<br>
-   <b>Sobre o meteoblue:</b> o arquivo histórico do meteoblue traz, além do que já usávamos, vento e umidade — variáveis que agora estão incluídas aqui (sensação térmica e vento). O próprio meteoblue avisa que são dados de <i>simulação/modelo</i>, não medições de estação (mesma natureza da reanálise ERA5 usada), e o download bruto hora a hora dele é pago.<br>
-   <b>Notas:</b> "Centro de Eventos" é local alternativo menor, usado em 5 domingos. Lacunas em março (08,15,22) sem contagem registrada.
- </div>
+ <h2><span class="b"></span>Principais leituras</h2>
+ <div class="insights" id="insights"></div>
+ <div class="foot" id="foot"></div>
 </div>
 
 <script>
-async function iniciarDashboard() {
-  try {
-    const response = await fetch('dados.json');
-    if (!response.ok) {
-      throw new Error(`Erro ao carregar o arquivo: ${response.status}`);
-    }
-    const DATA = await response.json();
+const HOURS=['9','11','16','18','20'];
+const C={ember:'#ff6a2b',ember2:'#ff9d4d',gold:'#ffcf5c',centro:'#4aa3ff',red:'#e3452f',mut:'#9aa1ab',line:'#2b3038',sol:'#ffcf5c',nub:'#8a94a3',chuva:'#4aa3ff',kids:'#38c172'};
+const ICON={Sol:'☀️',Parcial:'⛅',Nublado:'☁️',Garoa:'🌦️',Chuva:'🌧️'};
+const MES=['','Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+const fmt=n=>n==null?'':Math.round(n).toLocaleString('pt-BR');
+const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
+function grp(x){return(x==='Chuva'||x==='Garoa')?'Chuva/Garoa':(x==='Nublado'?'Nublado':'Sol/Parcial');}
 
-    const HOURS = ['9','11','16','18','20'];
-    const C = {ember:'#ff6a2b',ember2:'#ff9d4d',gold:'#ffcf5c',centro:'#4aa3ff',red:'#e3452f',mut:'#9aa1ab',line:'#2b3038',sol:'#ffcf5c',nub:'#8a94a3',chuva:'#4aa3ff'};
-    const fmt = n => n==null?'':n.toLocaleString('pt-BR');
-    const ICON={Sol:'☀️',Parcial:'⛅',Nublado:'☁️',Garoa:'🌦️',Chuva:'🌧️'};
-    Chart.defaults.color = C.mut;
-    Chart.defaults.font.family = "'Segoe UI',system-ui,sans-serif";
-    Chart.defaults.plugins.legend.labels.usePointStyle = true;
+async function boot(){
+ let DATA;
+ try{const r=await fetch('dados.json');if(!r.ok)throw new Error('HTTP '+r.status);DATA=await r.json();}
+ catch(e){document.getElementById('status').innerHTML='⚠️ Não consegui carregar o dados.json ('+e.message+').';return;}
+ document.getElementById('status').style.display='none';
+ document.getElementById('app').style.display='block';
+ Chart.defaults.color=C.mut;Chart.defaults.font.family="'Segoe UI',sans-serif";Chart.defaults.plugins.legend.labels.usePointStyle=true;
 
-    const totals = DATA.map(d=>d.total);
-    const grand = totals.reduce((a,b)=>a+b,0);
-    const avg = Math.round(grand/DATA.length);
-    const max = DATA.reduce((a,b)=>b.total>a.total?b:a);
-    const min = DATA.reduce((a,b)=>b.total<a.total?b:a);
-    document.getElementById('kpis').innerHTML=[
-     {v:fmt(grand),l:'Pessoas somadas (24 domingos)',s:'contagem acumulada'},
-     {v:fmt(avg),l:'Média por domingo',s:'todos os cultos'},
-     {v:fmt(max.total),l:'Maior · '+max.label,s:'sol e ~24°C'},
-     {v:fmt(min.total),l:'Menor · '+min.label,s:'Copa + frio'},
-     {v:'+0,69',l:'Correlação temp.manhã × 9h',s:'frio/chuva reduz o 9h'},
-    ].map(k=>`<div class="kpi"><div class="v">${k.v}</div><div class="l">${k.l}</div><div class="s">${k.s}</div></div>`).join('');
+ const totals=DATA.map(d=>d.total),grand=totals.reduce((a,b)=>a+b,0),avg=Math.round(grand/DATA.length);
+ const max=DATA.reduce((a,b)=>b.total>a.total?b:a),min=DATA.reduce((a,b)=>b.total<a.total?b:a);
+ const kd=DATA.filter(d=>d.kids); const familiaAvg=kd.length?Math.round(10*mean(kd.map(d=>d.familia)))/10:null;
+ document.getElementById('kpis').innerHTML=[
+  [fmt(grand),'Pessoas somadas ('+DATA.length+' domingos)'],[fmt(avg),'Média por domingo'],
+  [fmt(max.total),'Maior · '+max.label],[fmt(min.total),'Menor · '+min.label],
+  familiaAvg!=null?[String(familiaAvg).replace('.',','),'Crianças por 100 adultos']:['+0,69','Corr. temp × 9h']
+ ].map(k=>`<div class="kpi"><div class="v">${k[0]}</div><div class="l">${k[1]}</div></div>`).join('');
+ document.getElementById('tag').textContent=DATA.length+' domingos · '+DATA[0].label+' a '+DATA[DATA.length-1].label;
 
-    const labels = DATA.map(d=>d.label);
-    const pc=m=>DATA.map(d=> m==='holiday'?(d.holiday?C.gold:'#3a4048'): m==='wc'?(d.wc?C.red:'#3a4048'): m==='centro'?(d.venue==='Centro'?C.centro:'#3a4048'): (d.venue==='Centro'?C.centro:C.ember));
-    const pr=m=>DATA.map(d=> m==='all'?5 : ((m==='holiday'&&d.holiday)||(m==='wc'&&d.wc)||(m==='centro'&&d.venue==='Centro')?7:3));
-    const lineChart=new Chart(document.getElementById('lineChart'),{type:'line',
-     data:{labels,datasets:[{label:'Total',data:totals,borderColor:C.ember,borderWidth:2.5,tension:.32,fill:true,
-      backgroundColor:ctx=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,340);g.addColorStop(0,'rgba(255,106,43,.28)');g.addColorStop(1,'rgba(255,106,43,0)');return g;},
-      pointBackgroundColor:pc('all'),pointBorderColor:'#0f1113',pointBorderWidth:1.5,pointRadius:pr('all'),pointHoverRadius:9}]},
-     options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{
-       title:it=>'Domingo '+it[0].label,label:it=>'  '+fmt(it.raw)+' pessoas',
-       afterBody:it=>{const d=DATA[it[0].dataIndex];const w=d.wx['9'];let a=['Local: '+d.venue,'Manhã 9h: '+ICON[w.cond]+' '+w.cond+' '+w.temp+'°C (sente '+w.app+'°, 💨'+w.wind+'km/h)'];
-         if(d.holiday)a.push('🎉 '+d.holiday);if(d.wc)a.push('⚽ '+d.wc);if(d.note)a.push('📝 '+d.note);return a;}}}},
-      scales:{y:{grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
-    document.querySelectorAll('#lineCtrl .btn').forEach(b=>b.onclick=()=>{document.querySelectorAll('#lineCtrl .btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');
-     lineChart.data.datasets[0].pointBackgroundColor=pc(b.dataset.f);lineChart.data.datasets[0].pointRadius=pr(b.dataset.f);lineChart.update();});
+ const labels=DATA.map(d=>d.label);
+ const pc=m=>DATA.map(d=>m==='holiday'?(d.holiday?C.gold:'#3a4048'):m==='wc'?(d.wc?C.red:'#3a4048'):m==='centro'?(d.venue==='Centro'?C.centro:'#3a4048'):(d.venue==='Centro'?C.centro:C.ember));
+ const pr=m=>DATA.map(d=>m==='all'?5:((m==='holiday'&&d.holiday)||(m==='wc'&&d.wc)||(m==='centro'&&d.venue==='Centro')?7:3));
+ const line=new Chart(lineChart,{type:'line',data:{labels,datasets:[{data:totals,borderColor:C.ember,borderWidth:2.5,tension:.32,fill:true,
+   backgroundColor:x=>{const g=x.chart.ctx.createLinearGradient(0,0,0,340);g.addColorStop(0,'rgba(255,106,43,.28)');g.addColorStop(1,'rgba(255,106,43,0)');return g;},
+   pointBackgroundColor:pc('all'),pointBorderColor:'#0f1113',pointRadius:pr('all'),pointHoverRadius:9}]},
+   options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:i=>'Domingo '+i[0].label,label:i=>'  '+fmt(i.raw)+' pessoas',
+     afterBody:i=>{const d=DATA[i[0].dataIndex],w=(d.wx||{})['9']||{};let a=['Local: '+d.venue];if(d.kids)a.push('👦 Kids: '+fmt(d.kids)+' ('+d.familia+'/100)');if(w.temp!=null)a.push('Manhã 9h: '+ICON[w.cond]+' '+w.cond+' '+w.temp+'°');
+       if(d.holiday)a.push('🎉 '+d.holiday);if(d.wc)a.push('⚽ '+d.wc);if(d.note)a.push('📝 '+d.note);return a;}}}},
+   scales:{y:{grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
+ document.querySelectorAll('#lineCtrl .btn').forEach(b=>b.onclick=()=>{document.querySelectorAll('#lineCtrl .btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');line.data.datasets[0].pointBackgroundColor=pc(b.dataset.f);line.data.datasets[0].pointRadius=pr(b.dataset.f);line.update();});
 
-    function grp(cond){return (cond==='Chuva'||cond==='Garoa')?'Chuva/Garoa':(cond==='Nublado'?'Nublado':'Sol/Parcial');}
-    function avgByCond(hour){const b={};DATA.forEach(d=>{const s=d.services[hour];if(!s)return;const g=grp(d.wx[hour].cond);(b[g]=b[g]||[]).push(s);});
-     const o={};for(const k in b)o[k]=Math.round(b[k].reduce((a,c)=>a+c,0)/b[k].length);return o;}
-    const g9=avgByCond('9');
-    new Chart(document.getElementById('wx9Chart'),{type:'bar',
-     data:{labels:['☀️ Sol/Parcial','☁️ Nublado (frio)','🌧️ Chuva/Garoa'],
-      datasets:[{data:[g9['Sol/Parcial'],g9['Nublado'],g9['Chuva/Garoa']],backgroundColor:[C.sol,C.nub,C.chuva],borderRadius:8,maxBarThickness:70}]},
-     options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Público médio do culto das 9h',color:C.mut},
-      tooltip:{callbacks:{label:it=>fmt(it.raw)+' pessoas (média)'}}},scales:{y:{beginAtZero:true,grid:{color:C.line}},x:{grid:{display:false}}}}});
+ // ---- KIDS ----
+ if(kd.length){
+   new Chart(kidsChart,{data:{labels,datasets:[
+     {type:'bar',label:'Crianças',data:DATA.map(d=>d.kids||0),backgroundColor:C.kids,borderRadius:6,yAxisID:'y'},
+     {type:'line',label:'Índice família',data:DATA.map(d=>d.familia||null),borderColor:C.gold,borderWidth:2,tension:.3,pointRadius:3,yAxisID:'y1'}]},
+     options:{maintainAspectRatio:false,plugins:{legend:{position:'top'},title:{display:true,text:'Crianças por domingo e índice de família',color:C.mut},
+       tooltip:{callbacks:{label:i=>i.dataset.label==='Crianças'?'Crianças: '+fmt(i.raw):'Índice: '+i.raw+' /100 adultos'}}},
+       scales:{y:{beginAtZero:true,grid:{color:C.line},title:{display:true,text:'crianças',color:C.mut}},
+         y1:{position:'right',beginAtZero:true,grid:{display:false},title:{display:true,text:'/100 adultos',color:C.mut}},x:{grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}}}}});
+   const kh=HOURS.map(h=>DATA.reduce((s,d)=>s+((d.kidsHour||{})[h]||0),0));
+   new Chart(kidsHourChart,{type:'bar',data:{labels:HOURS.map(h=>h+'h'),datasets:[{data:kh,backgroundColor:C.kids,borderRadius:8,maxBarThickness:70}]},
+     options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Crianças por horário (ano)',color:C.mut},tooltip:{callbacks:{label:i=>fmt(i.raw)+' crianças'}}},scales:{y:{beginAtZero:true,grid:{color:C.line}},x:{grid:{display:false}}}}});
+   const kidsTot=kd.reduce((s,d)=>s+d.kids,0);
+   const hi=kd.reduce((a,b)=>b.familia>a.familia?b:a);
+   document.getElementById('kidsCallout').innerHTML='<b>'+fmt(kidsTot)+'</b> presenças de crianças no período, média de <b>'+familiaAvg.toString().replace('.',',')+' crianças para cada 100 adultos</b>. Curioso: nos domingos de menor público (Copa, frio) o índice de família SOBE (ex.: '+hi.label+' = '+hi.familia+'/100) — famílias com crianças resistem mais que o público adulto.';
+ }
 
-    const sc=DATA.filter(d=>d.services['9']).map(d=>({x:d.wx['9'].temp,y:d.services['9'],v:d.venue,l:d.label}));
-    new Chart(document.getElementById('scatterChart'),{type:'scatter',
-     data:{datasets:[{label:'Teatro',data:sc.filter(p=>p.v==='Teatro'),backgroundColor:C.ember,pointRadius:6},
-       {label:'Centro Ev.',data:sc.filter(p=>p.v==='Centro'),backgroundColor:C.centro,pointRadius:6}]},
-     options:{maintainAspectRatio:false,plugins:{legend:{position:'top'},title:{display:true,text:'Temperatura às 9h × público das 9h',color:C.mut},
-      tooltip:{callbacks:{label:it=>it.raw.l+': '+it.raw.x+'°C → '+fmt(it.raw.y)}}},
-      scales:{y:{grid:{color:C.line},title:{display:true,text:'público 9h',color:C.mut}},
-        x:{grid:{color:C.line},title:{display:true,text:'temperatura °C',color:C.mut}}}}});
+ // ---- clima 9h ----
+ function avgByCond(h){const b={};DATA.forEach(d=>{const s=d.services[h];if(!s)return;const w=(d.wx||{})[h];if(!w||w.temp==null)return;(b[grp(w.cond)]=b[grp(w.cond)]||[]).push(s);});const o={};for(const k in b)o[k]=Math.round(mean(b[k]));return o;}
+ const g9=avgByCond('9');
+ new Chart(wx9Chart,{type:'bar',data:{labels:['☀️ Sol/Parcial','☁️ Nublado','🌧️ Chuva/Garoa'],datasets:[{data:[g9['Sol/Parcial'],g9['Nublado'],g9['Chuva/Garoa']],backgroundColor:[C.sol,C.nub,C.chuva],borderRadius:8,maxBarThickness:70}]},
+   options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Público médio do culto das 9h',color:C.mut},tooltip:{callbacks:{label:i=>fmt(i.raw)+' pessoas'}}},scales:{y:{beginAtZero:true,grid:{color:C.line}},x:{grid:{display:false}}}}});
+ const has9=DATA.filter(d=>d.services['9']&&(d.wx||{})['9']&&d.wx['9'].temp!=null);
+ const sc=has9.map(d=>({x:d.wx['9'].temp,y:d.services['9'],v:d.venue,l:d.label}));
+ new Chart(scatterChart,{type:'scatter',data:{datasets:[{label:'Teatro',data:sc.filter(p=>p.v==='Teatro'),backgroundColor:C.ember,pointRadius:6},{label:'Centro',data:sc.filter(p=>p.v==='Centro'),backgroundColor:C.centro,pointRadius:6}]},
+   options:{maintainAspectRatio:false,plugins:{legend:{position:'top'},title:{display:true,text:'Temperatura às 9h × público das 9h',color:C.mut},tooltip:{callbacks:{label:i=>i.raw.l+': '+i.raw.x+'° → '+fmt(i.raw.y)}}},scales:{y:{grid:{color:C.line}},x:{grid:{color:C.line},title:{display:true,text:'°C às 9h',color:C.mut}}}}});
+ if(g9['Sol/Parcial']&&g9['Nublado'])document.getElementById('wxCallout').innerHTML='<b style="color:var(--ember2)">Leitura:</b> nas manhãs frias/encobertas o culto das 9h reúne ~'+fmt(g9['Nublado'])+' pessoas, contra ~'+fmt(g9['Sol/Parcial'])+' em manhãs de sol. Os cultos da tarde/noite quase não sentem o clima.';
 
-    document.getElementById('wxCallout').innerHTML='<b>Leitura:</b> nas manhãs frias e encobertas o culto das 9h perde em média <b>~230 pessoas</b> frente às manhãs de sol (649 vs 883, −26%). Cada grau a mais pela manhã acompanha mais gente às 9h (correlação +0,69). Para os cultos da tarde/noite o efeito do clima é pequeno.';
+ const sens=HOURS.map(h=>avgByCond(h));
+ new Chart(sensChart,{type:'bar',data:{labels:HOURS.map(h=>h+'h'),datasets:[
+   {label:'Sol/Parcial',data:sens.map(s=>s['Sol/Parcial']||null),backgroundColor:C.sol,borderRadius:6},
+   {label:'Nublado',data:sens.map(s=>s['Nublado']||null),backgroundColor:C.nub,borderRadius:6},
+   {label:'Chuva/Garoa',data:sens.map(s=>s['Chuva/Garoa']||null),backgroundColor:C.chuva,borderRadius:6}]},
+   options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>i.dataset.label+': '+fmt(i.raw)}}},scales:{y:{beginAtZero:true,grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
 
-    const sens=HOURS.map(h=>{const a=avgByCond(h);return {h,sol:a['Sol/Parcial']||null,nub:a['Nublado']||null,chuva:a['Chuva/Garoa']||null};});
-    new Chart(document.getElementById('sensChart'),{type:'bar',
-     data:{labels:HOURS.map(h=>h+'h'),datasets:[
-       {label:'Sol/Parcial',data:sens.map(s=>s.sol),backgroundColor:C.sol,borderRadius:6},
-       {label:'Nublado',data:sens.map(s=>s.nub),backgroundColor:C.nub,borderRadius:6},
-       {label:'Chuva/Garoa',data:sens.map(s=>s.chuva),backgroundColor:C.chuva,borderRadius:6}]},
-     options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:it=>it.dataset.label+': '+fmt(it.raw)}}},
-      scales:{y:{beginAtZero:true,grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
+ const tv=DATA.filter(d=>d.venue==='Teatro'),cv=DATA.filter(d=>d.venue==='Centro');
+ const vl=[],vd=[],vc=[];if(tv.length){vl.push('Teatro ('+tv.length+')');vd.push(Math.round(mean(tv.map(d=>d.total))));vc.push(C.ember);}
+ if(cv.length){vl.push('Centro ('+cv.length+')');vd.push(Math.round(mean(cv.map(d=>d.total))));vc.push(C.centro);}
+ new Chart(venueChart,{type:'bar',data:{labels:vl,datasets:[{data:vd,backgroundColor:vc,borderRadius:8,maxBarThickness:90}]},
+   options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>'Média: '+fmt(i.raw)}}},scales:{y:{beginAtZero:true,grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
+ const hAvg=HOURS.map(h=>{const a=DATA.map(d=>d.services[h]).filter(v=>v);return a.length?Math.round(mean(a)):0;});
+ new Chart(hourChart,{type:'bar',data:{labels:HOURS.map(h=>h+'h'),datasets:[{data:hAvg,backgroundColor:['#ffb98a','#ff6a2b','#ff8a4d','#ffa76b','#c9541f'],borderRadius:8,maxBarThickness:70}]},
+   options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>'Média: '+fmt(i.raw)}}},scales:{y:{beginAtZero:true,grid:{color:C.line}},x:{grid:{display:false}}}}});
+ const hc={'9':'#ffd9b0','11':'#ff6a2b','16':'#ff8a4d','18':'#ffab6e','20':'#b8481a'};
+ new Chart(stackChart,{type:'bar',data:{labels,datasets:HOURS.map(h=>({label:h+'h',data:DATA.map(d=>d.services[h]||0),backgroundColor:hc[h],stack:'s'}))},
+   options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:i=>i.dataset.label+': '+fmt(i.raw)}}},scales:{y:{stacked:true,beginAtZero:true,grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{stacked:true,grid:{display:false},ticks:{maxRotation:90,minRotation:45,font:{size:9}}}}}});
+ const mm={};DATA.forEach(d=>{(mm[d.mes]=mm[d.mes]||[]).push(d.total);});const ml=MES.filter(m=>mm[m]);
+ new Chart(monthChart,{type:'bar',data:{labels:ml,datasets:[{data:ml.map(m=>Math.round(mean(mm[m]))),backgroundColor:'#ff6a2b',borderRadius:7,maxBarThickness:46}]},
+   options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>'Média: '+fmt(i.raw)+' ('+mm[i.label].length+' dom.)'}}},scales:{y:{beginAtZero:true,grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
 
-    const tv=DATA.filter(d=>d.venue==='Teatro'),cv=DATA.filter(d=>d.venue==='Centro');
-    const tAvg=Math.round(tv.reduce((a,b)=>a+b.total,0)/tv.length),cAvg=Math.round(cv.reduce((a,b)=>a+b.total,0)/cv.length);
-    new Chart(document.getElementById('venueChart'),{type:'bar',
-     data:{labels:['Teatro ('+tv.length+')','Centro Ev. ('+cv.length+')'],datasets:[{data:[tAvg,cAvg],backgroundColor:[C.ember,C.centro],borderRadius:8,maxBarThickness:90}]},
-     options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:it=>'Média: '+fmt(it.raw)+'/domingo'}}},
-      scales:{y:{beginAtZero:true,grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
+ let allv=[];DATA.forEach(d=>HOURS.forEach(h=>{if(d.services[h])allv.push(d.services[h]);}));
+ const lo=Math.min(...allv),hh=Math.max(...allv);
+ const col=v=>{if(v==null)return'background:#141619;color:#3a4048';const t=(v-lo)/(hh-lo||1);return `background:rgb(${Math.round(60+t*195)},${Math.round(40+t*90)},${Math.round(30+t*10)});color:${t>.5?'#1a0f07':'#f2efe9'};font-weight:600`;};
+ let ht='<table class="ht"><thead><tr><th></th>'+DATA.map(d=>'<th>'+d.label+'</th>').join('')+'</tr></thead><tbody>';
+ HOURS.forEach(h=>{ht+='<tr><td class="hlabel">'+h+'h</td>'+DATA.map(d=>{const v=d.services[h],w=(d.wx||{})[h];const tt=d.label+' '+h+'h: '+(v?fmt(v):'—')+(w&&w.temp!=null?' | '+ICON[w.cond]+' '+w.cond+' '+w.temp+'°':'');return '<td style="'+col(v)+'" title="'+tt+'">'+(v?fmt(v):'—')+'</td>';}).join('')+'</tr>';});
+ ht+='<tr><td class="hlabel" style="color:var(--ember2)">Total</td>'+DATA.map(d=>'<td style="background:#20242a;color:var(--ember2);font-weight:800">'+fmt(d.total)+'</td>').join('')+'</tr>';
+ ht+='<tr><td class="hlabel" style="color:var(--kids)">Kids</td>'+DATA.map(d=>'<td style="background:#161e18;color:var(--kids);font-weight:700">'+(d.kids?fmt(d.kids):'—')+'</td>').join('')+'</tr></tbody></table>';
+ document.getElementById('heatmap').innerHTML=ht;
 
-    const hourAvg=HOURS.map(h=>{const a=DATA.map(d=>d.services[h]).filter(v=>v);return Math.round(a.reduce((x,y)=>x+y,0)/a.length);});
-    new Chart(document.getElementById('hourChart'),{type:'bar',
-     data:{labels:HOURS.map(h=>h+'h'),datasets:[{data:hourAvg,backgroundColor:['#ffb98a','#ff6a2b','#ff8a4d','#ffa76b','#c9541f'],borderRadius:8,maxBarThickness:70}]},
-     options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:it=>'Média: '+fmt(it.raw)}}},
-      scales:{y:{beginAtZero:true,grid:{color:C.line}},x:{grid:{display:false}}}}});
+ function rt(f){const rows=DATA.filter(d=>f==='holiday'?d.holiday:f==='wc'?d.wc:f==='centro'?d.venue==='Centro':f==='rain'?((d.wx||{})['9']&&['Chuva','Garoa','Nublado'].includes(d.wx['9'].cond)):true);
+  document.getElementById('fbody').innerHTML=rows.map(d=>{const w=(d.wx||{})['9']||{};
+   return `<tr><td><b>${d.label}</b><br><span style="color:var(--mut);font-size:11px">${d.mes}</span></td>
+    <td>${d.venue==='Centro'?'<span class="vpill vc">Centro</span>':'<span class="vpill vt">Teatro</span>'}</td>
+    <td class="tnum">${fmt(d.total)}</td><td style="color:var(--kids);font-weight:700">${d.kids?fmt(d.kids):'—'}</td><td>${fmt(d.services['9']||0)}</td>
+    <td class="wx">${w.temp!=null?ICON[w.cond]+' '+w.cond+' '+w.temp+'°'+(w.app!=null?' <span style="color:var(--mut)">(sente '+w.app+'°)</span>':''):'—'}</td>
+    <td>${d.holiday?'<span class="badge bg-h">🎉 '+d.holiday+'</span>':'—'}</td>
+    <td>${d.wc?'<span class="badge bg-w">⚽ '+d.wc+'</span>':'—'}</td></tr>`;}).join('');}
+ rt('all');
+ document.querySelectorAll('.btn[data-t]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.btn[data-t]').forEach(x=>x.classList.remove('active'));b.classList.add('active');rt(b.dataset.t);});
 
-    const hc={'9':'#ffd9b0','11':'#ff6a2b','16':'#ff8a4d','18':'#ffab6e','20':'#b8481a'};
-    new Chart(document.getElementById('stackChart'),{type:'bar',
-     data:{labels,datasets:HOURS.map(h=>({label:h+'h',data:DATA.map(d=>d.services[h]||0),backgroundColor:hc[h],stack:'s',borderWidth:0}))},
-     options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:it=>it.dataset.label+': '+fmt(it.raw)}}},
-      scales:{y:{stacked:true,beginAtZero:true,grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{stacked:true,grid:{display:false},ticks:{maxRotation:90,minRotation:45,font:{size:9}}}}}});
-
-    const MESN={Jan:1,Fev:2,Mar:3,Abr:4,Mai:5,Jun:6,Jul:7};const mm={};DATA.forEach(d=>{(mm[d.mes]=mm[d.mes]||[]).push(d.total);});
-    const ml=Object.keys(mm).sort((a,b)=>MESN[a]-MESN[b]);
-    new Chart(document.getElementById('monthChart'),{type:'bar',
-     data:{labels:ml,datasets:[{data:ml.map(m=>Math.round(mm[m].reduce((a,b)=>a+b,0)/mm[m].length)),
-      backgroundColor:ml.map((m,i)=>['#ffcf5c','#ffb84d','#ff9d4d','#ff8340','#ff6a2b','#e8551f','#c9451a'][i]),borderRadius:7,maxBarThickness:46}]},
-     options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:it=>'Média: '+fmt(it.raw)+'/dom ('+mm[it.label].length+' dom.)'}}},
-      scales:{y:{beginAtZero:true,grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
-
-    (function(){let allv=[];DATA.forEach(d=>HOURS.forEach(h=>{if(d.services[h])allv.push(d.services[h]);}));
-     const mn=Math.min(...allv),mx=Math.max(...allv);
-     const col=v=>{if(v==null)return 'background:#141619;color:#3a4048';const t=(v-mn)/(mx-mn);
-       return `background:rgb(${Math.round(60+t*195)},${Math.round(40+t*90)},${Math.round(30+t*10)});color:${t>.5?'#1a0f07':'#f2efe9'};font-weight:600`;};
-     let h='<table class="ht"><thead><tr><th></th>'+DATA.map(d=>'<th>'+d.label+'</th>').join('')+'</tr></thead><tbody>';
-     HOURS.forEach(hr=>{h+='<tr><td class="hlabel">'+hr+'h</td>'+DATA.map(d=>{const v=d.services[hr];const w=d.wx[hr];
-       const tt=d.label+' '+hr+'h: '+(v?fmt(v):'—')+(w?' | '+ICON[w.cond]+' '+w.cond+' '+w.temp+'°C'+(w.precip>0?' '+w.precip+'mm':''):'');
-       return '<td style="'+col(v)+'" title="'+tt+'">'+(v?fmt(v):'—')+'</td>';}).join('')+'</tr>';});
-     h+='<tr><td class="hlabel" style="color:var(--ember2)">Total</td>'+DATA.map(d=>'<td style="background:#20242a;color:var(--ember2);font-weight:800">'+fmt(d.total)+'</td>').join('')+'</tr></tbody></table>';
-     document.getElementById('heatmap').innerHTML=h;})();
-
-    function renderTable(f){const rows=DATA.filter(d=>f==='holiday'?d.holiday:f==='wc'?d.wc:f==='centro'?d.venue==='Centro':f==='rain'?['Chuva','Garoa','Nublado'].includes(d.wx['9'].cond):true);
-     document.getElementById('fbody').innerHTML=rows.map(d=>{const w=d.wx['9'];
-       const vp=d.venue==='Centro'?'<span class="vpill vc">Centro Ev.</span>':'<span class="vpill vt">Teatro</span>';
-       const hb=d.holiday?'<span class="badge bg-h">🎉 '+d.holiday+'</span>':'<span style="color:#3a4048">—</span>';
-       const wb=d.wc?'<span class="badge bg-w">⚽ '+d.wc+'</span>':'<span style="color:#3a4048">—</span>';
-       return `<tr><td><b>${d.label}</b><br><span style="color:var(--mut);font-size:11px">${d.mes}</span></td>
-         <td>${vp}</td><td class="tnum">${fmt(d.total)}</td><td>${fmt(d.services['9']||0)}</td>
-         <td class="wx">${ICON[w.cond]} ${w.cond} · ${w.temp}°C <span style="color:var(--mut)">(sente ${w.app}°)</span> · 💨${w.wind}km/h${w.precip>0?' · '+w.precip+'mm':''}</td>
-         <td>${hb}</td><td>${wb}</td><td style="color:#cfd4db;max-width:220px">${d.note||''}</td></tr>`;}).join('');}
-    
-    renderTable('all');
-    document.querySelectorAll('.btn[data-t]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.btn[data-t]').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderTable(b.dataset.t);});
-
-  } catch (error) {
-    console.error("Falha ao carregar os dados:", error);
-    document.getElementById('kpis').innerHTML = "Ocorreu um erro ao carregar os dados. Verifique se o arquivo dados.json existe no repositório.";
-  }
+ const ins=[];
+ if(tv.length&&cv.length)ins.push(['🏟️ O local pesa muito','Teatro: média <span class="em">'+fmt(mean(tv.map(d=>d.total)))+'</span>/domingo; Centro de Eventos: <span class="em">'+fmt(mean(cv.map(d=>d.total)))+'</span>.']);
+ if(g9['Sol/Parcial'])ins.push(['🌡️ Frio/nublado esvazia o 9h','9h: sol <span class="em">'+fmt(g9['Sol/Parcial'])+'</span>, chuva <span class="em">'+fmt(g9['Chuva/Garoa']||0)+'</span>, nublado <span class="em">'+fmt(g9['Nublado']||0)+'</span>.']);
+ if(kd.length)ins.push(['👦 Famílias resistem mais','Média de <span class="em">'+familiaAvg.toString().replace('.',',')+' crianças/100 adultos</span>. Em dias de Copa/frio o índice sobe — a queda é maior entre adultos.']);
+ ins.push(['📈 Maior e menor','Maior: <span class="em">'+max.label+' ('+fmt(max.total)+')</span>. Menor: <span class="em">'+min.label+' ('+fmt(min.total)+')</span>'+(min.wc?' — '+min.wc:'')+'.']);
+ document.getElementById('insights').innerHTML=ins.map(c=>`<div class="ins"><h3>${c[0]}</h3><p>${c[1]}</p></div>`).join('');
+ document.getElementById('foot').innerHTML='Dados: contagem "BC Contagem 2026" + presença Kids · clima Open-Meteo (ERA5) · atualiza sozinho ao recarregar.';
 }
-
-iniciarDashboard();
+boot();
 </script>
 </body>
 </html>
