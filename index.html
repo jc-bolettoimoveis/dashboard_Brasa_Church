@@ -79,6 +79,13 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
    <span><span class="dot" style="background:var(--gold)"></span>Feriadão</span>
    <span><span class="dot" style="background:var(--red)"></span>Copa</span></div></div>
 
+ <!-- TOTAL GERAL -->
+ <h2><span class="b"></span>Público total por domingo (adultos + Kids)</h2>
+ <div class="hint">Soma de todos os cultos com as crianças. Passe o mouse para ver o total geral do dia.</div>
+ <div class="card"><div class="chartbox"><canvas id="geralChart"></canvas></div>
+   <div class="legend"><span><span class="dot" style="background:var(--ember)"></span>Adultos</span>
+   <span><span class="dot" style="background:var(--kids)"></span>Crianças (Kids)</span></div></div>
+
  <!-- KIDS -->
  <h2><span class="b"></span>Kids · presença de crianças</h2>
  <div class="hint">Crianças por domingo e o "índice de família" (crianças para cada 100 adultos).</div>
@@ -141,11 +148,12 @@ async function boot(){
  const totals=DATA.map(d=>d.total),grand=totals.reduce((a,b)=>a+b,0),avg=Math.round(grand/DATA.length);
  const max=DATA.reduce((a,b)=>b.total>a.total?b:a),min=DATA.reduce((a,b)=>b.total<a.total?b:a);
  const kd=DATA.filter(d=>d.kids); const familiaAvg=kd.length?Math.round(10*mean(kd.map(d=>d.familia)))/10:null;
- document.getElementById('kpis').innerHTML=[
-  [fmt(grand),'Pessoas somadas ('+DATA.length+' domingos)'],[fmt(avg),'Média por domingo'],
-  [fmt(max.total),'Maior · '+max.label],[fmt(min.total),'Menor · '+min.label],
-  familiaAvg!=null?[String(familiaAvg).replace('.',','),'Crianças por 100 adultos']:['+0,69','Corr. temp × 9h']
- ].map(k=>`<div class="kpi"><div class="v">${k[0]}</div><div class="l">${k[1]}</div></div>`).join('');
+ const grandKids=kd.reduce((s,d)=>s+d.kids,0);
+ const cards=[[fmt(grand),'Adultos somados ('+DATA.length+' domingos)'],[fmt(avg),'Média por domingo'],
+  [fmt(max.total),'Maior domingo · '+max.label],[fmt(min.total),'Menor domingo · '+min.label]];
+ if(kd.length){cards.push([fmt(grand+grandKids),'Total geral (adultos + Kids)']);cards.push([String(familiaAvg).replace('.',','),'Crianças por 100 adultos']);}
+ else cards.push(['+0,69','Corr. temp × 9h']);
+ document.getElementById('kpis').innerHTML=cards.map(k=>`<div class="kpi"><div class="v">${k[0]}</div><div class="l">${k[1]}</div></div>`).join('');
  document.getElementById('tag').textContent=DATA.length+' domingos · '+DATA[0].label+' a '+DATA[DATA.length-1].label;
 
  const labels=DATA.map(d=>d.label);
@@ -162,6 +170,13 @@ async function boot(){
 
  // ---- KIDS ----
  if(kd.length){
+   new Chart(geralChart,{type:'bar',data:{labels,datasets:[
+     {label:'Adultos',data:DATA.map(d=>d.total),backgroundColor:C.ember,stack:'g',borderRadius:{topLeft:0,topRight:0}},
+     {label:'Crianças',data:DATA.map(d=>d.kids||0),backgroundColor:C.kids,stack:'g',borderRadius:6}]},
+     options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{
+       label:i=>i.dataset.label+': '+fmt(i.raw),
+       afterBody:i=>{const d=DATA[i[0].dataIndex];return 'Total geral: '+fmt((d.total||0)+(d.kids||0));}}}},
+     scales:{y:{stacked:true,beginAtZero:true,grid:{color:C.line},ticks:{callback:v=>fmt(v)}},x:{stacked:true,grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}}}}});
    new Chart(kidsChart,{data:{labels,datasets:[
      {type:'bar',label:'Crianças',data:DATA.map(d=>d.kids||0),backgroundColor:C.kids,borderRadius:6,yAxisID:'y'},
      {type:'line',label:'Índice família',data:DATA.map(d=>d.familia||null),borderColor:C.gold,borderWidth:2,tension:.3,pointRadius:3,yAxisID:'y1'}]},
