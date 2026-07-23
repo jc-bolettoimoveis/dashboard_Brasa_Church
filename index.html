@@ -106,6 +106,21 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
  </div>
  <div class="callout" id="funilCallout" style="background:linear-gradient(135deg,rgba(255,207,92,.1),rgba(56,193,114,.08))"></div>
 
+ <!-- CAPTAÇÃO SEMANA A SEMANA -->
+ <h2><span class="b"></span>Captação semana a semana (CRM)</h2>
+ <div class="hint">Agendamentos (Planeje), anúncios, 1ªs visitas, decisões, orações e batismos por semana. Clique na legenda para mostrar/ocultar. <b style="color:#ff9d4d">Obs.:</b> o registro de "Aceitou Jesus" no CRM só vai até fev/2026 (dados do resto do ano em levantamento).</div>
+ <div class="card"><div class="chartbox"><canvas id="semChart"></canvas></div>
+   <div class="legend" style="margin-top:12px">
+     <span><span class="dot" style="background:#4aa3ff"></span>1ªs visitas</span>
+     <span><span class="dot" style="background:#ffcf5c"></span>Agendamentos</span>
+     <span><span class="dot" style="background:#ff6a2b"></span>Anúncios (ADS)</span>
+     <span><span class="dot" style="background:#38c172"></span>Aceitou Jesus</span>
+     <span><span class="dot" style="background:#b57edc"></span>Orações</span>
+     <span><span class="dot" style="background:#e3452f"></span>Batismos</span>
+   </div>
+   <div class="callout" id="semCallout" style="margin-top:12px"></div>
+ </div>
+
  <h2><span class="b"></span>Clima × culto da manhã (9h)</h2>
  <div class="hint">O culto das 9h é o mais sensível ao tempo.</div>
  <div class="grid2"><div class="card"><div class="chartbox sm"><canvas id="wx9Chart"></canvas></div></div>
@@ -284,6 +299,23 @@ async function boot(){
  document.getElementById('foot').innerHTML='Dados: contagem "BC Contagem 2026" + presença Kids · clima Open-Meteo (ERA5) · atualiza sozinho ao recarregar.';
 }
 boot();
+(async function loadSemanal(){
+ try{
+  const r=await fetch('funil_semanal.json'); if(!r.ok)return; const S=await r.json();
+  const el=document.getElementById('semChart'); if(!el||!S.length)return;
+  const labels=S.map(s=>s.label);
+  const mk=(lab,key,color)=>({label:lab,data:S.map(s=>s[key]||0),borderColor:color,backgroundColor:color,borderWidth:2,tension:.3,pointRadius:2,pointHoverRadius:5});
+  new Chart(el,{type:'line',data:{labels,datasets:[
+    mk('1ªs visitas','visitas','#4aa3ff'),mk('Agendamentos','agendou','#ffcf5c'),
+    mk('Anúncios (ADS)','agendou_ads','#ff6a2b'),mk('Aceitou Jesus','aceitou_jesus','#38c172'),
+    mk('Orações','oracao','#b57edc'),mk('Batismos','batismo','#e3452f')]},
+   options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{title:i=>'Semana de '+i[0].label}}},
+    interaction:{mode:'index',intersect:false},
+    scales:{y:{beginAtZero:true,grid:{color:'#2b3038'},ticks:{callback:v=>v.toLocaleString('pt-BR')}},x:{grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}}}}});
+  const tot=k=>S.reduce((a,s)=>a+(s[k]||0),0);
+  document.getElementById('semCallout').innerHTML='<b style="color:var(--ember2)">No ano:</b> '+tot('visitas').toLocaleString('pt-BR')+' primeiras visitas · '+tot('agendou').toLocaleString('pt-BR')+' agendamentos ('+tot('agendou_ads').toLocaleString('pt-BR')+' por anúncio) · '+tot('aceitou_jesus').toLocaleString('pt-BR')+' decisões · '+tot('oracao').toLocaleString('pt-BR')+' pedidos de oração · '+tot('batismo').toLocaleString('pt-BR')+' batismos. <b>Atenção:</b> o registro de "Aceitou Jesus" no CRM parou após fevereiro e os anúncios cessaram em junho — vale retomar.';
+ }catch(e){}
+})();
 </script>
 </body>
 </html>
