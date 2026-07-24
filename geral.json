@@ -100,42 +100,42 @@
   {
    "n": "Convite de membro",
    "v": 4033,
-   "passos": 1.3,
+   "passos": 1.32,
    "trilha": 5,
    "c": "#4aa3ff"
   },
   {
    "n": "Indicação orgânica",
    "v": 2272,
-   "passos": 1.31,
+   "passos": 1.33,
    "trilha": 6,
    "c": "#38c172"
   },
   {
    "n": "ADS (pago)",
    "v": 677,
-   "passos": 1.35,
+   "passos": 1.36,
    "trilha": 6,
    "c": "#ff6a2b"
   },
   {
    "n": "Influenciador",
    "v": 173,
-   "passos": 1.31,
+   "passos": 1.32,
    "trilha": 6,
    "c": "#ffcf5c"
   },
   {
    "n": "Movimento / rua",
    "v": 114,
-   "passos": 1.22,
+   "passos": 1.25,
    "trilha": 3,
    "c": "#b57edc"
   },
   {
    "n": "Outros",
    "v": 61,
-   "passos": 1.54,
+   "passos": 1.56,
    "trilha": 10,
    "c": "#9aa1ab"
   }
@@ -144,53 +144,53 @@
   {
    "n": "Agendou visita",
    "total": 2192,
-   "conv": 378,
-   "pct": 17,
+   "conv": 395,
+   "pct": 18,
    "c": "#ffcf5c"
   },
   {
    "n": "Leads de anúncio (ADS)",
-   "total": 1968,
-   "conv": 266,
-   "pct": 14,
+   "total": 2861,
+   "conv": 438,
+   "pct": 15,
    "c": "#ff6a2b"
   },
   {
    "n": "Orações / Newsletter",
    "total": 975,
-   "conv": 440,
-   "pct": 45,
+   "conv": 450,
+   "pct": 46,
    "c": "#38c172"
   }
  ],
  "reengajamento": [
   {
    "n": "Visitaram e não voltaram",
-   "v": 6147
+   "v": 5951
   },
   {
    "n": "Aceitaram Jesus sem Trilha",
-   "v": 5828
+   "v": 6264
   },
   {
    "n": "Agendaram e não vieram",
-   "v": 1435
+   "v": 1491
   },
   {
    "n": "Fez Passo 02, não o 03",
-   "v": 829
+   "v": 902
   },
   {
    "n": "Fez Passo 01, não o 02",
-   "v": 592
+   "v": 604
   },
   {
    "n": "Fez Passo 03, não o 04",
-   "v": 410
+   "v": 502
   },
   {
    "n": "Batizados sem Trilha",
-   "v": 325
+   "v": 340
   }
  ]
 }
