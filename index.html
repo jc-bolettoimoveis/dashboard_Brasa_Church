@@ -293,7 +293,7 @@ async function boot(){
    const totPv=fv.reduce((s,d)=>s+d.pv,0);
    const ajw=DATA.filter(d=>'aj' in d); const totAj=ajw.reduce((s,d)=>s+d.aj,0); const pvAjw=ajw.reduce((s,d)=>s+(d.pv||0),0);
    const pubTot=DATA.reduce((s,d)=>s+d.total,0);
-   document.getElementById('funilCallout').innerHTML='<b style="color:var(--gold)">'+fmt(totPv)+'</b> primeiras visitas no período ('+(100*totPv/pubTot).toFixed(1).replace('.',',')+'% do público total). <b style="color:var(--kids)">'+fmt(totAj)+'</b> decisões registradas — cerca de <b>'+Math.round(100*totAj/pvAjw)+' por 100 primeiras visitas</b> nas semanas com dado. Obs.: "Aceitou Jesus" só tem dados até 22/fev; quando vier o período completo, o painel atualiza sozinho.';
+   document.getElementById('funilCallout').innerHTML='<b style="color:var(--gold)">'+fmt(totPv)+'</b> primeiras visitas no período ('+(100*totPv/pubTot).toFixed(1).replace('.',',')+'% do público total). <b style="color:var(--kids)">'+fmt(totAj)+'</b> decisões registradas — cerca de <b>'+Math.round(100*totAj/pvAjw)+' por 100 primeiras visitas</b> nas semanas com dado. Obs.: "Aceitou Jesus" agora usa a contagem real da igreja e cobre até abr/2026 (alguns cultos sem contagem de presença — ex.: 08/03 e 15/03 — aparecem no gráfico "Captação semana a semana").';
  }
 
  // ---- clima 9h ----
