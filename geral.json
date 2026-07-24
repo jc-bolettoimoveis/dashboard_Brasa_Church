@@ -1,0 +1,52 @@
+{
+ "total": 46523,
+ "atualizado": "jul/2026",
+ "obs": "Base completa acumulada (todas as origens cruzadas por telefone e e-mail). Não é por ano — é a foto atual da jornada. Só quantidades, sem dados pessoais.",
+ "estagios": [
+  { "n": "Lead / contato (CRM)",           "v": 21161, "c": "#4aa3ff" },
+  { "n": "Na base Eklesia (sem Trilha)",   "v": 7563,  "c": "#ff6a2b" },
+  { "n": "Visitou (1ª vez)",               "v": 6122,  "c": "#38c172" },
+  { "n": "Aceitou Jesus",                  "v": 5877,  "c": "#ffcf5c" },
+  { "n": "Membro / Passo 01",              "v": 3034,  "c": "#b57edc" },
+  { "n": "Passo 02",                       "v": 899,   "c": "#e87ba4" },
+  { "n": "Passo 03",                       "v": 500,   "c": "#6fbf73" },
+  { "n": "Passo 04",                       "v": 555,   "c": "#e3452f" },
+  { "n": "Líderes (LIDERE)",               "v": 473,   "c": "#9aa1ab" },
+  { "n": "Outros / a classificar",         "v": 339,   "c": "#5f5e5a" }
+ ],
+ "trilha": [
+  { "n": "Passo 01 / Membro", "v": 3034 },
+  { "n": "Passo 02",          "v": 899 },
+  { "n": "Passo 03",          "v": 500 },
+  { "n": "Passo 04",          "v": 555 },
+  { "n": "Líderes (LIDERE)",  "v": 473 }
+ ],
+ "kpis": [
+  { "v": 46523, "l": "Pessoas na base (total)" },
+  { "v": 17460, "l": "Já visitaram a casa", "s": "38% do total" },
+  { "v": 5461,  "l": "Chegaram à Trilha (membro+)", "s": "12% do total" },
+  { "v": 473,   "l": "Líderes formados" }
+ ],
+ "origem": [
+  { "n": "Convite de membro",  "v": 4033, "passos": 1.30, "trilha": 5,  "c": "#4aa3ff" },
+  { "n": "Indicação orgânica", "v": 2272, "passos": 1.31, "trilha": 6,  "c": "#38c172" },
+  { "n": "ADS (pago)",         "v": 677,  "passos": 1.35, "trilha": 6,  "c": "#ff6a2b" },
+  { "n": "Influenciador",      "v": 173,  "passos": 1.31, "trilha": 6,  "c": "#ffcf5c" },
+  { "n": "Movimento / rua",    "v": 114,  "passos": 1.22, "trilha": 3,  "c": "#b57edc" },
+  { "n": "Outros",             "v": 61,   "passos": 1.54, "trilha": 10, "c": "#9aa1ab" }
+ ],
+ "coortes": [
+  { "n": "Agendou visita",        "total": 2192, "conv": 378, "pct": 17, "c": "#ffcf5c" },
+  { "n": "Leads de anúncio (ADS)","total": 1968, "conv": 266, "pct": 14, "c": "#ff6a2b" },
+  { "n": "Orações / Newsletter",  "total": 975,  "conv": 440, "pct": 45, "c": "#38c172" }
+ ],
+ "reengajamento": [
+  { "n": "Visitaram e não voltaram",     "v": 6147 },
+  { "n": "Aceitaram Jesus sem Trilha",   "v": 5828 },
+  { "n": "Agendaram e não vieram",       "v": 1435 },
+  { "n": "Fez Passo 02, não o 03",       "v": 829 },
+  { "n": "Fez Passo 01, não o 02",       "v": 592 },
+  { "n": "Fez Passo 03, não o 04",       "v": 410 },
+  { "n": "Batizados sem Trilha",         "v": 325 }
+ ]
+}

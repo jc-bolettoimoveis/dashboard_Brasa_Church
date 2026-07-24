@@ -55,6 +55,17 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
 .callout b{color:var(--kids)}
 .foot{color:var(--mut);font-size:12px;margin-top:34px;border-top:1px solid var(--line);padding-top:16px}
 #status{max-width:1240px;margin:16px auto;padding:14px 20px;border-radius:12px;background:var(--panel);border:1px solid var(--line);color:var(--mut);font-size:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 2px}
+.tab{background:var(--panel);border:1px solid var(--line);color:var(--txt);font-size:14px;font-weight:700;padding:9px 18px;border-radius:12px 12px 0 0;cursor:pointer;display:flex;align-items:center;gap:7px}
+.tab.active{background:var(--grad);color:#1a0f07;border-color:transparent}
+.tab.soon{opacity:.5;cursor:not-allowed;font-weight:600}
+.tab .ic{font-size:15px}
+.donutwrap{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:center}
+@media(max-width:860px){.donutwrap{grid-template-columns:1fr}}
+.leglist{display:flex;flex-direction:column;gap:9px}
+.legrow{display:flex;align-items:center;gap:9px;font-size:13.5px}
+.legrow .sw{width:12px;height:12px;border-radius:3px;flex:none}
+.legrow .nm{flex:1}.legrow .vv{font-weight:700}.legrow .pc{color:var(--mut);font-size:12px;min-width:38px;text-align:right}
 </style>
 </head>
 <body>
@@ -65,6 +76,11 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
   <span class="tag" id="tag">carregando…</span>
   <div class="kpis" id="kpis"></div>
 </div></header>
+<div class="wrap"><div class="tabs" id="tabs">
+  <button class="tab active" data-view="2026"><span class="ic">📊</span>Presenças 2026</button>
+  <button class="tab" data-view="geral"><span class="ic">🧭</span>Geral · jornada</button>
+  <button class="tab soon" disabled title="Quando tivermos as presenças antigas"><span class="ic">🗓️</span>2025 (em breve)</button>
+</div></div>
 <div id="status">Carregando dados…</div>
 <div class="wrap" id="app" style="display:none">
 
@@ -152,6 +168,44 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
  <h2><span class="b"></span>Principais leituras</h2>
  <div class="insights" id="insights"></div>
  <div class="foot" id="foot"></div>
+</div>
+
+<div class="wrap" id="appGeral" style="display:none">
+ <div class="kpis" id="geralKpis"></div>
+
+ <h2><span class="b"></span>Onde está cada grupo hoje</h2>
+ <div class="hint" id="geralObs">Foto atual da base inteira, cruzando todas as origens por telefone e e-mail. Só quantidades — nenhum dado pessoal.</div>
+ <div class="card"><div class="donutwrap">
+   <div class="chartbox"><canvas id="estagioDonut"></canvas></div>
+   <div class="leglist" id="estagioLeg"></div>
+ </div></div>
+ <div class="callout" id="geralCallout" style="background:linear-gradient(135deg,rgba(74,163,255,.1),rgba(255,106,43,.08))"></div>
+
+ <h2><span class="b"></span>Zoom na Trilha (discipulado)</h2>
+ <div class="hint">Numa pizza, os passos finais viram fatias invisíveis (~1% cada). Aqui a queda aparece: quantas pessoas param em cada passo.</div>
+ <div class="card"><div class="chartbox"><canvas id="trilhaBar"></canvas></div></div>
+ <div class="callout" id="trilhaCallout" style="background:linear-gradient(135deg,rgba(181,126,220,.12),rgba(255,106,43,.06))"></div>
+
+ <h2><span class="b"></span>De onde vem nossa gente</h2>
+ <div class="hint">Origem das primeiras visitas (quando registrada) e até onde cada fonte leva na jornada.</div>
+ <div class="grid3">
+   <div class="card"><div class="chartbox"><canvas id="origemDonut"></canvas></div>
+     <div class="leglist" id="origemLeg" style="margin-top:12px"></div></div>
+   <div class="card"><div style="font-weight:700;color:var(--ember2);font-size:13px;margin-bottom:12px">Quão longe cada fonte leva (passos médios na Trilha)</div>
+     <div class="leglist" id="origemFar"></div></div>
+ </div>
+ <div class="callout" id="origemCallout" style="background:linear-gradient(135deg,rgba(255,106,43,.12),rgba(255,207,92,.07))"></div>
+
+ <h2><span class="b"></span>Ninguém é lead perdido</h2>
+ <div class="hint">O fluxo não é linear: gente que "sumiu" volta e converte tempo depois. Cruzado contra TODAS as bases, por telefone e e-mail.</div>
+ <div class="insights" id="coortesCards"></div>
+ <div class="callout" id="coortesCallout" style="background:linear-gradient(135deg,rgba(56,193,114,.1),rgba(181,126,220,.08))"></div>
+
+ <h2><span class="b"></span>Listas de reengajamento (potencial)</h2>
+ <div class="hint">Quantas pessoas estão paradas em cada etapa — cada barra é uma lista pronta para a equipe pastoral trabalhar (contato individual sai só no painel interno).</div>
+ <div class="card"><div class="chartbox"><canvas id="reengBar"></canvas></div></div>
+
+ <div class="foot">Base acumulada de todas as fontes (Eklesia, Boas-vindas, Aceitou Jesus, Trilha, Batismo, anúncios, Planeje) casadas por telefone e e-mail. Números são tendência (exports heterogêneos). Sem nomes, telefones ou dados de pessoas — só contagens.</div>
 </div>
 
 <script>
@@ -316,6 +370,63 @@ boot();
   document.getElementById('semCallout').innerHTML='<b style="color:var(--ember2)">No ano:</b> '+tot('visitas').toLocaleString('pt-BR')+' primeiras visitas · '+tot('agendou').toLocaleString('pt-BR')+' agendamentos ('+tot('agendou_ads').toLocaleString('pt-BR')+' por anúncio) · '+tot('aceitou_jesus').toLocaleString('pt-BR')+' decisões · '+tot('oracao').toLocaleString('pt-BR')+' pedidos de oração · '+tot('batismo').toLocaleString('pt-BR')+' batismos. <b>Atenção:</b> o registro de "Aceitou Jesus" no CRM parou após fevereiro e os anúncios cessaram em junho — vale retomar.';
  }catch(e){}
 })();
+
+// ---- ABAS (Presenças 2026 / Geral) ----
+let geralLoaded=false;
+function showView(v){
+ document.querySelectorAll('#tabs .tab').forEach(t=>t.classList.toggle('active',t.dataset.view===v));
+ const is26=(v==='2026');
+ const app=document.getElementById('app'); if(app)app.style.display=is26?'block':'none';
+ const st=document.getElementById('status'); if(st&&!is26)st.style.display='none';
+ document.getElementById('appGeral').style.display=is26?'none':'block';
+ const kp=document.getElementById('kpis'); if(kp)kp.style.display=is26?'':'none';
+ const tg=document.getElementById('tag'); if(tg)tg.style.display=is26?'':'none';
+ if(!is26&&!geralLoaded){geralLoaded=true;renderGeral();}
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('#tabs .tab').forEach(t=>{if(!t.classList.contains('soon'))t.onclick=()=>showView(t.dataset.view);});
+
+async function renderGeral(){
+ const F=n=>Math.round(n).toLocaleString('pt-BR');
+ let G; try{const r=await fetch('geral.json');if(!r.ok)throw new Error('HTTP '+r.status);G=await r.json();}
+ catch(e){document.getElementById('geralObs').textContent='Não consegui carregar o geral.json ('+e.message+').';return;}
+ const T=G.total;
+ if(G.obs)document.getElementById('geralObs').textContent=G.obs;
+ document.getElementById('geralKpis').innerHTML=(G.kpis||[]).map(k=>`<div class="kpi"><div class="v">${F(k.v)}</div><div class="l">${k.l}</div>${k.s?`<div class="s">${k.s}</div>`:''}</div>`).join('');
+ document.getElementById('estagioLeg').innerHTML=G.estagios.map(g=>`<div class="legrow"><span class="sw" style="background:${g.c}"></span><span class="nm">${g.n}</span><span class="vv">${F(g.v)}</span><span class="pc">${Math.round(g.v/T*100)}%</span></div>`).join('');
+ new Chart(estagioDonut,{type:'doughnut',data:{labels:G.estagios.map(g=>g.n),datasets:[{data:G.estagios.map(g=>g.v),backgroundColor:G.estagios.map(g=>g.c),borderColor:'#181b1f',borderWidth:2}]},
+   options:{maintainAspectRatio:false,cutout:'56%',plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>' '+i.label+': '+F(i.raw)+' ('+Math.round(i.raw/T*100)+'%)'}}}}});
+ new Chart(trilhaBar,{type:'bar',data:{labels:G.trilha.map(x=>x.n),datasets:[{data:G.trilha.map(x=>x.v),backgroundColor:'#b57edc',borderRadius:6,maxBarThickness:36}]},
+   options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>F(i.raw)+' pessoas'}}},scales:{x:{beginAtZero:true,grid:{color:'#2b3038'},ticks:{callback:v=>F(v)}},y:{grid:{display:false}}}}});
+ const visit=17460,trilha=5461;
+ document.getElementById('geralCallout').innerHTML='<b style="color:var(--ember2)">Leitura:</b> de cada 100 pessoas na base, cerca de <b>46 ainda são só lead/contato</b> e <b>16 estão no Eklesia sem terem entrado na Trilha</b> — mais de 60% são gente para reengajar. Já visitaram a casa '+F(visit)+' ('+Math.round(visit/T*100)+'%), e só <b>'+Math.round(trilha/T*100)+'% chegaram à Trilha</b>. É o funil em forma de pizza: base larguíssima, topo estreito.';
+ const tr=G.trilha.map(x=>x.v);
+ document.getElementById('trilhaCallout').innerHTML='A esteira afunila rápido: <b>'+F(tr[0])+'</b> no Passo 01 → <b>'+F(tr[1])+'</b> no 02 → <b>'+F(tr[2])+'</b> no 03 → <b>'+F(tr[3])+'</b> no 04 → <b>'+F(tr[4])+'</b> líderes. Cada passo perdido é uma lista de reengajamento pronta.';
+
+ // ---- ORIGEM ----
+ if(G.origem&&G.origem.length){
+   const ot=G.origem.reduce((s,o)=>s+o.v,0);
+   document.getElementById('origemLeg').innerHTML=G.origem.map(o=>`<div class="legrow"><span class="sw" style="background:${o.c}"></span><span class="nm">${o.n}</span><span class="vv">${F(o.v)}</span><span class="pc">${Math.round(o.v/ot*100)}%</span></div>`).join('');
+   document.getElementById('origemFar').innerHTML=G.origem.map(o=>`<div class="legrow"><span class="sw" style="background:${o.c}"></span><span class="nm">${o.n}</span><span class="pc" style="min-width:auto;color:var(--txt)"><b>${String(o.passos).replace('.',',')}</b> passos · <span style="color:var(--mut)">${o.trilha}% Trilha</span></span></div>`).join('');
+   new Chart(origemDonut,{type:'doughnut',data:{labels:G.origem.map(o=>o.n),datasets:[{data:G.origem.map(o=>o.v),backgroundColor:G.origem.map(o=>o.c),borderColor:'#181b1f',borderWidth:2}]},
+     options:{maintainAspectRatio:false,cutout:'56%',plugins:{legend:{display:false},title:{display:true,text:'De onde vêm os visitantes',color:C.mut},tooltip:{callbacks:{label:i=>' '+i.label+': '+F(i.raw)+' ('+Math.round(i.raw/ot*100)+'%)'}}}}});
+   const conv=G.origem[0];
+   document.getElementById('origemCallout').innerHTML='<b style="color:var(--ember2)">Leitura:</b> o <b>convite de membro</b> traz mais da metade dos visitantes ('+Math.round(G.origem[0].v/ot*100)+'%), mas o <b>ADS</b> — mesmo sendo ~'+Math.round(G.origem[2].v/ot*100)+'% do volume — leva a pessoa MAIS longe na média (<b>1,35 passos</b> vs 1,30 do convite). Vale investir no anúncio e cuidar para não perder esse lead no repasse.';
+ }
+
+ // ---- COORTES (ninguém é lead perdido) ----
+ if(G.coortes&&G.coortes.length){
+   document.getElementById('coortesCards').innerHTML=G.coortes.map(c=>`<div class="ins" style="border-left-color:${c.c}"><div style="font-size:36px;font-weight:800;color:${c.c};letter-spacing:-1.5px;line-height:1">${c.pct}%</div><p style="margin-top:4px;color:var(--mut)">converteram depois</p><h3 style="margin-top:10px">${c.n}</h3><p style="color:var(--mut)">${F(c.conv)} de ${F(c.total)} pessoas</p></div>`).join('');
+   document.getElementById('coortesCallout').innerHTML='O "não veio" e o lead de anúncio não são perdas definitivas — parte volta e converte meses depois. E quem pede <b>oração ou assina a newsletter converte 3x mais</b> (45%): é audiência quente para nutrir com consistência.';
+ }
+
+ // ---- REENGAJAMENTO ----
+ if(G.reengajamento&&G.reengajamento.length){
+   const R=G.reengajamento;
+   new Chart(reengBar,{type:'bar',data:{labels:R.map(x=>x.n),datasets:[{data:R.map(x=>x.v),backgroundColor:'#ff6a2b',borderRadius:6,maxBarThickness:30}]},
+     options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>F(i.raw)+' pessoas'}}},scales:{x:{beginAtZero:true,grid:{color:'#2b3038'},ticks:{callback:v=>F(v)}},y:{grid:{display:false}}}}});
+ }
+}
 </script>
 </body>
 </html>
