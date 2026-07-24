@@ -181,6 +181,12 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
  </div></div>
  <div class="callout" id="geralCallout" style="background:linear-gradient(135deg,rgba(74,163,255,.1),rgba(255,106,43,.08))"></div>
 
+ <h2><span class="b"></span>Em quantas frentes cada pessoa está</h2>
+ <div class="hint">A pizza acima coloca cada pessoa num balde só (o estágio mais avançado). Aqui vemos a verdade cruzada: cada linha é uma <b>combinação de frentes</b> (bolinhas ligadas), e a barra mostra quantas pessoas estão exatamente nela. Revela quem toca um ponto e nunca cruza para outro — é o "UpSet", que substitui o Venn quando há muitas frentes.</div>
+ <div class="kpis" id="upsetKpis"></div>
+ <div class="card" style="overflow-x:auto"><div id="upsetChart"></div></div>
+ <div class="callout" id="upsetCallout" style="background:linear-gradient(135deg,rgba(74,163,255,.1),rgba(255,106,43,.08))"></div>
+
  <h2><span class="b"></span>Zoom na Trilha (discipulado)</h2>
  <div class="hint">Numa pizza, os passos finais viram fatias invisíveis (~1% cada). Aqui a queda aparece: quantas pessoas param em cada passo.</div>
  <div class="card"><div class="chartbox"><canvas id="trilhaBar"></canvas></div></div>
@@ -398,7 +404,7 @@ async function renderGeral(){
    options:{maintainAspectRatio:false,cutout:'56%',plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>' '+i.label+': '+F(i.raw)+' ('+Math.round(i.raw/T*100)+'%)'}}}}});
  new Chart(trilhaBar,{type:'bar',data:{labels:G.trilha.map(x=>x.n),datasets:[{data:G.trilha.map(x=>x.v),backgroundColor:'#b57edc',borderRadius:6,maxBarThickness:36}]},
    options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>F(i.raw)+' pessoas'}}},scales:{x:{beginAtZero:true,grid:{color:'#2b3038'},ticks:{callback:v=>F(v)}},y:{grid:{display:false}}}}});
- const visit=17460,trilha=5461;
+ const visit=(G.kpis[1]||{}).v||0, trilha=(G.kpis[2]||{}).v||0;
  document.getElementById('geralCallout').innerHTML='<b style="color:var(--ember2)">Leitura:</b> de cada 100 pessoas na base, cerca de <b>46 ainda são só lead/contato</b> e <b>16 estão no Eklesia sem terem entrado na Trilha</b> — mais de 60% são gente para reengajar. Já visitaram a casa '+F(visit)+' ('+Math.round(visit/T*100)+'%), e só <b>'+Math.round(trilha/T*100)+'% chegaram à Trilha</b>. É o funil em forma de pizza: base larguíssima, topo estreito.';
  const tr=G.trilha.map(x=>x.v);
  document.getElementById('trilhaCallout').innerHTML='A esteira afunila rápido: <b>'+F(tr[0])+'</b> no Passo 01 → <b>'+F(tr[1])+'</b> no 02 → <b>'+F(tr[2])+'</b> no 03 → <b>'+F(tr[3])+'</b> no 04 → <b>'+F(tr[4])+'</b> líderes. Cada passo perdido é uma lista de reengajamento pronta.';
@@ -420,12 +426,48 @@ async function renderGeral(){
    document.getElementById('coortesCallout').innerHTML='O "não veio" e o lead de anúncio não são perdas definitivas — parte volta e converte meses depois. E quem pede <b>oração ou assina a newsletter converte 3x mais</b> (45%): é audiência quente para nutrir com consistência.';
  }
 
+ // ---- UPSET (interseções de frentes) ----
+ try{const ru=await fetch('upset.json');if(ru.ok)renderUpset(await ru.json());}catch(e){}
+
  // ---- REENGAJAMENTO ----
  if(G.reengajamento&&G.reengajamento.length){
    const R=G.reengajamento;
    new Chart(reengBar,{type:'bar',data:{labels:R.map(x=>x.n),datasets:[{data:R.map(x=>x.v),backgroundColor:'#ff6a2b',borderRadius:6,maxBarThickness:30}]},
      options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:i=>F(i.raw)+' pessoas'}}},scales:{x:{beginAtZero:true,grid:{color:'#2b3038'},ticks:{callback:v=>F(v)}},y:{grid:{display:false}}}}});
  }
+}
+
+function renderUpset(U){
+ const F=n=>Math.round(n).toLocaleString('pt-BR');
+ const r=U.resumo||{};
+ document.getElementById('upsetKpis').innerHTML=[
+  [F(r.so_uma_frente||0),'Em só UMA frente','tocaram um ponto e não cruzaram'],
+  [F(r.varias_frentes||0),'Em VÁRIAS frentes','jornada em mais de um ponto'],
+  [F(r.so_crm||0),'Só no CRM (contato)','cadastro solto, nenhuma frente']
+ ].map(k=>`<div class="kpi"><div class="v">${k[0]}</div><div class="l">${k[1]}</div><div class="s" style="color:var(--mut);font-weight:400">${k[2]}</div></div>`).join('');
+ const cols=U.sets.map(s=>s.n), tot=Object.fromEntries(U.sets.map(s=>[s.n,s.v]));
+ const combos=U.combos.slice(0,14);
+ const mx=150,colW=30,rowH=30,headH=104,barX0=430,barX1=700,W=720,ACC='#ff6a2b';
+ const maxN=Math.max(...combos.map(c=>c.n)), H=headH+combos.length*rowH+16;
+ let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:680px;font-family:'Segoe UI',sans-serif">`;
+ cols.forEach((c,i)=>{const x=mx+i*colW+colW/2;
+   s+=`<text x="${x}" y="${headH-40}" transform="rotate(-45 ${x} ${headH-40})" text-anchor="start" font-size="12" fill="#f2efe9">${c}</text>`;
+   s+=`<text x="${x}" y="${headH-8}" text-anchor="middle" font-size="10" fill="#9aa1ab">${F(tot[c])}</text>`;});
+ s+=`<text x="${barX0}" y="${headH-8}" font-size="11" fill="#9aa1ab">pessoas na combinação →</text>`;
+ combos.forEach((cb,ri)=>{const y=headH+ri*rowH,cy=y+rowH/2,inn=cb.frentes;
+   if(ri%2===0)s+=`<rect x="0" y="${y}" width="${W}" height="${rowH}" fill="#ffffff" opacity="0.04"/>`;
+   const idxs=inn.map(n=>cols.indexOf(n)).sort((a,b)=>a-b);
+   if(idxs.length>1){const x1=mx+idxs[0]*colW+colW/2,x2=mx+idxs[idxs.length-1]*colW+colW/2;
+     s+=`<line x1="${x1}" y1="${cy}" x2="${x2}" y2="${cy}" stroke="${ACC}" stroke-width="2.5"/>`;}
+   cols.forEach((c,i)=>{const cx=mx+i*colW+colW/2,on=inn.includes(c);
+     s+=`<circle cx="${cx}" cy="${cy}" r="6.5" fill="${on?ACC:'#3a4048'}"/>`;});
+   const w=(cb.n/maxN)*(barX1-barX0);
+   s+=`<rect x="${barX0}" y="${cy-8}" width="${Math.max(w,1)}" height="16" rx="3" fill="${ACC}"/>`;
+   s+=`<text x="${barX0+Math.max(w,1)+6}" y="${cy+4}" font-size="12" fill="#f2efe9">${F(cb.n)}</text>`;});
+ s+=`</svg>`;
+ document.getElementById('upsetChart').innerHTML=s;
+ const single=nm=>{const c=U.combos.find(x=>x.frentes.length===1&&x.frentes[0]===nm);return c?c.n:0;};
+ document.getElementById('upsetCallout').innerHTML='<b style="color:var(--ember2)">Leitura:</b> quase metade da base toca <b>só uma frente</b> e não cruza para nenhuma outra. Os maiores "vazamentos": <b>'+F(single('Boas-vindas'))+'</b> só no Boas-vindas, <b>'+F(single('Aceitou Jesus'))+'</b> só no Aceitou Jesus e <b>'+F(single('ADS (lead)'))+'</b> vindos de anúncio que não avançaram. Cada linha de bolinhas ligadas é uma ponte que deu certo; cada frente isolada é uma ponte a construir.';
 }
 </script>
 </body>
