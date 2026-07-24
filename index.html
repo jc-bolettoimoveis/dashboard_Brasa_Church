@@ -124,7 +124,7 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
 
  <!-- CAPTAÇÃO SEMANA A SEMANA -->
  <h2><span class="b"></span>Captação semana a semana (CRM)</h2>
- <div class="hint">Agendamentos (Planeje), anúncios, 1ªs visitas, decisões, orações e batismos por semana. Clique na legenda para mostrar/ocultar. <b style="color:#ff9d4d">Obs.:</b> o registro de "Aceitou Jesus" no CRM só vai até fev/2026 (dados do resto do ano em levantamento).</div>
+ <div class="hint">Agendamentos (Planeje), anúncios, 1ªs visitas, decisões, orações e batismos por semana. Clique na legenda para mostrar/ocultar. <b style="color:#ff9d4d">Obs.:</b> "Aceitou Jesus" agora usa a contagem real da igreja (planilha da Jornada) e cobre até abr/2026; de maio em diante ainda em levantamento.</div>
  <div class="card"><div class="chartbox"><canvas id="semChart"></canvas></div>
    <div class="legend" style="margin-top:12px">
      <span><span class="dot" style="background:#4aa3ff"></span>1ªs visitas</span>
@@ -367,7 +367,7 @@ boot();
     interaction:{mode:'index',intersect:false},
     scales:{y:{beginAtZero:true,grid:{color:'#2b3038'},ticks:{callback:v=>v.toLocaleString('pt-BR')}},x:{grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}}}}});
   const tot=k=>S.reduce((a,s)=>a+(s[k]||0),0);
-  document.getElementById('semCallout').innerHTML='<b style="color:var(--ember2)">No ano:</b> '+tot('visitas').toLocaleString('pt-BR')+' primeiras visitas · '+tot('agendou').toLocaleString('pt-BR')+' agendamentos ('+tot('agendou_ads').toLocaleString('pt-BR')+' por anúncio) · '+tot('aceitou_jesus').toLocaleString('pt-BR')+' decisões · '+tot('oracao').toLocaleString('pt-BR')+' pedidos de oração · '+tot('batismo').toLocaleString('pt-BR')+' batismos. <b>Atenção:</b> o registro de "Aceitou Jesus" no CRM parou após fevereiro e os anúncios cessaram em junho — vale retomar.';
+  document.getElementById('semCallout').innerHTML='<b style="color:var(--ember2)">No ano:</b> '+tot('visitas').toLocaleString('pt-BR')+' primeiras visitas · '+tot('agendou').toLocaleString('pt-BR')+' agendamentos ('+tot('agendou_ads').toLocaleString('pt-BR')+' por anúncio) · '+tot('aceitou_jesus').toLocaleString('pt-BR')+' decisões · '+tot('oracao').toLocaleString('pt-BR')+' pedidos de oração · '+tot('batismo').toLocaleString('pt-BR')+' batismos. <b>Atenção:</b> "Aceitou Jesus" cobre até abr/2026 (contagem real da igreja, planilha da Jornada); de maio em diante ainda em levantamento. Os anúncios cessaram em junho — vale retomar.';
  }catch(e){}
 })();
 
