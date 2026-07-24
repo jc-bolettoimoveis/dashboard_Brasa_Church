@@ -1,16 +1,16 @@
 {
- "total": 46660,
+ "total": 46707,
  "atualizado": "jul/2026",
  "obs": "Base completa acumulada (todas as origens cruzadas por telefone e e-mail). Não é por ano — é a foto atual da jornada. Só quantidades, sem dados pessoais.",
  "estagios": [
   {
    "n": "Lead / contato (CRM)",
-   "v": 21148,
+   "v": 21159,
    "c": "#4aa3ff"
   },
   {
    "n": "Na base Eklesia (sem Trilha)",
-   "v": 7556,
+   "v": 7567,
    "c": "#ff6a2b"
   },
   {
@@ -25,22 +25,22 @@
   },
   {
    "n": "Membro / Passo 01",
-   "v": 3037,
+   "v": 3045,
    "c": "#b57edc"
   },
   {
    "n": "Passo 02",
-   "v": 899,
+   "v": 902,
    "c": "#e87ba4"
   },
   {
    "n": "Passo 03",
-   "v": 501,
+   "v": 502,
    "c": "#6fbf73"
   },
   {
    "n": "Passo 04",
-   "v": 555,
+   "v": 556,
    "c": "#e3452f"
   },
   {
@@ -50,26 +50,26 @@
   },
   {
    "n": "Outros / a classificar",
-   "v": 341,
+   "v": 353,
    "c": "#5f5e5a"
   }
  ],
  "trilha": [
   {
    "n": "Passo 01 / Membro",
-   "v": 3037
+   "v": 3045
   },
   {
    "n": "Passo 02",
-   "v": 899
+   "v": 902
   },
   {
    "n": "Passo 03",
-   "v": 501
+   "v": 502
   },
   {
    "n": "Passo 04",
-   "v": 555
+   "v": 556
   },
   {
    "n": "Líderes (LIDERE)",
@@ -78,16 +78,16 @@
  ],
  "kpis": [
   {
-   "v": 46660,
+   "v": 46707,
    "l": "Pessoas na base (total)"
   },
   {
-   "v": 17615,
+   "v": 17628,
    "l": "Já visitaram a casa",
    "s": "38% do total"
   },
   {
-   "v": 5465,
+   "v": 5478,
    "l": "Chegaram à Trilha (membro+)",
    "s": "12% do total"
   },

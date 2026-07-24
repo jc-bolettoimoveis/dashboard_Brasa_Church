@@ -1,0 +1,28 @@
+{
+ "meta_eventos": 4051,
+ "leads_rastreados": 2861,
+ "so_ads": 1463,
+ "engajaram": 1398,
+ "visitou_guiche": 249,
+ "presenca_fisica": 696,
+ "converteu": 343,
+ "funnel": [
+  [
+   "Leads rastreados (formulário)",
+   2861
+  ],
+  [
+   "Engajaram em alguma frente",
+   1398
+  ],
+  [
+   "Presença física comprovada",
+   696
+  ],
+  [
+   "Converteram (AJ/Trilha/Batismo)",
+   343
+  ]
+ ],
+ "nota": "Meta Ads reporta 4.051 eventos de lead (site + formulário, com repetições). Aqui juntamos os formulários baixados (2025) + a aba ADS curada do Kommo (leads com título 'Facebook Nº', 2024–2026, todos com telefone). Ainda faltam os 'Leads no Site' (não viram contato) e a origem que o Kommo não gravou na maioria — então segue sendo um piso do rastreável, mas bem mais completo."
+}

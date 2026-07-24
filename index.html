@@ -211,6 +211,12 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
  <div class="hint">Quantas pessoas estão paradas em cada etapa — cada barra é uma lista pronta para a equipe pastoral trabalhar (contato individual sai só no painel interno).</div>
  <div class="card"><div class="chartbox"><canvas id="reengBar"></canvas></div></div>
 
+ <h2><span class="b"></span>Anúncios (ADS) — o que o investimento traz</h2>
+ <div class="hint">Do clique ao discipulado. <b style="color:#ff9d4d">Importante:</b> o Kommo não gravou a origem dos leads (utm/fbclid vazios) e só temos os formulários de 2025 baixados — então estes números são um <b>piso</b> do que dá para rastrear hoje, não o total real.</div>
+ <div class="kpis" id="adsKpis"></div>
+ <div class="card"><div class="chartbox"><canvas id="adsFunnel"></canvas></div></div>
+ <div class="callout" id="adsCallout" style="background:linear-gradient(135deg,rgba(255,106,43,.12),rgba(74,163,255,.06))"></div>
+
  <div class="foot">Base acumulada de todas as fontes (Eklesia, Boas-vindas, Aceitou Jesus, Trilha, Batismo, anúncios, Planeje) casadas por telefone e e-mail. Números são tendência (exports heterogêneos). Sem nomes, telefones ou dados de pessoas — só contagens.</div>
 </div>
 
@@ -428,6 +434,8 @@ async function renderGeral(){
 
  // ---- UPSET (interseções de frentes) ----
  try{const ru=await fetch('upset.json');if(ru.ok)renderUpset(await ru.json());}catch(e){}
+ // ---- ADS ----
+ try{const ra=await fetch('ads.json');if(ra.ok)renderAds(await ra.json());}catch(e){}
 
  // ---- REENGAJAMENTO ----
  if(G.reengajamento&&G.reengajamento.length){
@@ -468,6 +476,20 @@ function renderUpset(U){
  document.getElementById('upsetChart').innerHTML=s;
  const single=nm=>{const c=U.combos.find(x=>x.frentes.length===1&&x.frentes[0]===nm);return c?c.n:0;};
  document.getElementById('upsetCallout').innerHTML='<b style="color:var(--ember2)">Leitura:</b> quase metade da base toca <b>só uma frente</b> e não cruza para nenhuma outra. Os maiores "vazamentos": <b>'+F(single('Boas-vindas'))+'</b> só no Boas-vindas, <b>'+F(single('Aceitou Jesus'))+'</b> só no Aceitou Jesus e <b>'+F(single('ADS (lead)'))+'</b> vindos de anúncio que não avançaram. Cada linha de bolinhas ligadas é uma ponte que deu certo; cada frente isolada é uma ponte a construir.';
+}
+
+function renderAds(A){
+ const F=n=>Math.round(n).toLocaleString('pt-BR');
+ const pc=n=>Math.round(100*n/A.leads_rastreados);
+ document.getElementById('adsKpis').innerHTML=[
+  [F(A.meta_eventos),'Eventos no Meta Ads','site + formulário (com repetições)'],
+  [F(A.leads_rastreados),'Leads rastreáveis','formulários que casamos por tel/e-mail'],
+  [F(A.presenca_fisica),'Visitaram presencialmente',pc(A.presenca_fisica)+'% dos rastreados'],
+  [F(A.converteu),'Converteram',pc(A.converteu)+'% (aceitou/Trilha/batismo)']
+ ].map(k=>`<div class="kpi"><div class="v">${k[0]}</div><div class="l">${k[1]}</div><div class="s" style="color:var(--mut);font-weight:400">${k[2]}</div></div>`).join('');
+ new Chart(adsFunnel,{type:'bar',data:{labels:A.funnel.map(x=>x[0]),datasets:[{data:A.funnel.map(x=>x[1]),backgroundColor:['#4aa3ff','#ffcf5c','#38c172','#ff6a2b'],borderRadius:6,maxBarThickness:40}]},
+   options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Do lead ao discipulado (leads rastreáveis)',color:C.mut},tooltip:{callbacks:{label:i=>F(i.raw)+' pessoas'}}},scales:{x:{beginAtZero:true,grid:{color:'#2b3038'},ticks:{callback:v=>F(v)}},y:{grid:{display:false}}}}});
+ document.getElementById('adsCallout').innerHTML='<b style="color:var(--ember2)">Leitura:</b> dos '+F(A.leads_rastreados)+' leads que conseguimos rastrear, <b>'+F(A.presenca_fisica)+' ('+pc(A.presenca_fisica)+'%) pisaram na Brasa</b> e <b>'+F(A.converteu)+'</b> converteram. O guichê só registrou '+F(A.visitou_guiche)+' — a diferença é gente que veio e não se apresentou. O Meta reporta '+F(A.meta_eventos)+' eventos: o buraco entre '+F(A.meta_eventos)+' e '+F(A.leads_rastreados)+' é campanha/2026 sem arquivo + "leads no site" que não viram contato + a origem que o Kommo não gravou. <b>É o caso mais claro para o sistema único.</b>';
 }
 </script>
 </body>
