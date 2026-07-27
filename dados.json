@@ -1755,5 +1755,64 @@
   "kidsVis": 2,
   "familia": 8.0,
   "pv": 135
+ },
+ {
+  "date": "2026-07-26",
+  "label": "26/07",
+  "mes": "Jul",
+  "venue": "Teatro",
+  "total": 2355,
+  "services": {
+   "9": 500,
+   "11": 500,
+   "16": 500,
+   "18": 500,
+   "20": 355
+  },
+  "holiday": "",
+  "wc": "",
+  "note": "",
+  "wx": {
+   "9": {
+    "temp": 16.6,
+    "app": 16.9,
+    "wind": 7.7,
+    "precip": 0,
+    "cloud": 22,
+    "cond": "Sol"
+   },
+   "11": {
+    "temp": 18.9,
+    "app": 21.4,
+    "wind": 1.8,
+    "precip": 2.8,
+    "cloud": 99,
+    "cond": "Chuva"
+   },
+   "16": {
+    "temp": 19.2,
+    "app": 21.3,
+    "wind": 7.9,
+    "precip": 2.4,
+    "cloud": 100,
+    "cond": "Chuva"
+   },
+   "18": {
+    "temp": 18.7,
+    "app": 21.1,
+    "wind": 4.5,
+    "precip": 0.1,
+    "cloud": 100,
+    "cond": "Garoa"
+   },
+   "20": {
+    "temp": 18.4,
+    "app": 21.3,
+    "wind": 0.8,
+    "precip": 0,
+    "cloud": 100,
+    "cond": "Nublado"
+   }
+  }
  }
 ]
