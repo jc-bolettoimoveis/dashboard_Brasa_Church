@@ -124,7 +124,7 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
 
  <!-- CAPTAÇÃO SEMANA A SEMANA -->
  <h2><span class="b"></span>Captação semana a semana (CRM)</h2>
- <div class="hint">Agendamentos (Planeje), anúncios, 1ªs visitas, decisões, orações e batismos por semana. Clique na legenda para mostrar/ocultar. <b style="color:#ff9d4d">Obs.:</b> "Aceitou Jesus" agora usa a contagem real da igreja (planilha da Jornada) e cobre até abr/2026; de maio em diante ainda em levantamento.</div>
+ <div class="hint">Agendamentos (Planeje), anúncios, 1ªs visitas, decisões, orações e batismos por semana. Clique na legenda para mostrar/ocultar. <b style="color:#ff9d4d">Obs.:</b> "Aceitou Jesus" usa a contagem real da igreja (planilha unificada da Jornada) e cobre até jul/2026. A linha mostra as decisões feitas no culto; reativações e cafés entram no total geral (aba Geral), não nesta linha semanal.</div>
  <div class="card"><div class="chartbox"><canvas id="semChart"></canvas></div>
    <div class="legend" style="margin-top:12px">
      <span><span class="dot" style="background:#4aa3ff"></span>1ªs visitas</span>
@@ -135,6 +135,20 @@ table.f td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top
      <span><span class="dot" style="background:#e3452f"></span>Batismos</span>
    </div>
    <div class="callout" id="semCallout" style="margin-top:12px"></div>
+ </div>
+
+ <h2><span class="b"></span>Aceitou Jesus por semana — e o que aconteceu</h2>
+ <div class="hint">As decisões semana a semana, com o contexto de cada uma (feriadão, Copa, café, campanha…). Passe o mouse para ver o motivo da subida ou queda. Você pode editar o arquivo <b>eventos.json</b> para anotar suas próprias ações e campanhas.</div>
+ <div class="card"><div class="chartbox"><canvas id="ajSemChart"></canvas></div>
+   <div class="legend" style="margin-top:10px">
+     <span><span class="dot" style="background:#38c172"></span>Café/Mutirão</span>
+     <span><span class="dot" style="background:#ffcf5c"></span>Feriadão</span>
+     <span><span class="dot" style="background:#e3452f"></span>Copa</span>
+     <span><span class="dot" style="background:#8a94a3"></span>Férias</span>
+     <span><span class="dot" style="background:#ff6a2b"></span>Campanha / ação</span>
+     <span><span class="dot" style="background:#4aa3ff"></span>Semana normal</span>
+   </div>
+   <div class="callout" id="ajSemCallout" style="margin-top:12px"></div>
  </div>
 
  <h2><span class="b"></span>Clima × culto da manhã (9h)</h2>
@@ -299,7 +313,7 @@ async function boot(){
    const totPv=fv.reduce((s,d)=>s+d.pv,0);
    const ajw=DATA.filter(d=>'aj' in d); const totAj=ajw.reduce((s,d)=>s+d.aj,0); const pvAjw=ajw.reduce((s,d)=>s+(d.pv||0),0);
    const pubTot=DATA.reduce((s,d)=>s+d.total,0);
-   document.getElementById('funilCallout').innerHTML='<b style="color:var(--gold)">'+fmt(totPv)+'</b> primeiras visitas no período ('+(100*totPv/pubTot).toFixed(1).replace('.',',')+'% do público total). <b style="color:var(--kids)">'+fmt(totAj)+'</b> decisões registradas — cerca de <b>'+Math.round(100*totAj/pvAjw)+' por 100 primeiras visitas</b> nas semanas com dado. Obs.: "Aceitou Jesus" agora usa a contagem real da igreja e cobre até abr/2026 (alguns cultos sem contagem de presença — ex.: 08/03 e 15/03 — aparecem no gráfico "Captação semana a semana").';
+   document.getElementById('funilCallout').innerHTML='<b style="color:var(--gold)">'+fmt(totPv)+'</b> primeiras visitas no período ('+(100*totPv/pubTot).toFixed(1).replace('.',',')+'% do público total). <b style="color:var(--kids)">'+fmt(totAj)+'</b> decisões registradas — cerca de <b>'+Math.round(100*totAj/pvAjw)+' por 100 primeiras visitas</b> nas semanas com dado. Obs.: "Aceitou Jesus" usa a contagem real da igreja e cobre até jul/2026 (alguns cultos sem contagem de presença aparecem só no gráfico "Captação semana a semana").';
  }
 
  // ---- clima 9h ----
@@ -379,7 +393,29 @@ boot();
     interaction:{mode:'index',intersect:false},
     scales:{y:{beginAtZero:true,grid:{color:'#2b3038'},ticks:{callback:v=>v.toLocaleString('pt-BR')}},x:{grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}}}}});
   const tot=k=>S.reduce((a,s)=>a+(s[k]||0),0);
-  document.getElementById('semCallout').innerHTML='<b style="color:var(--ember2)">No ano:</b> '+tot('visitas').toLocaleString('pt-BR')+' primeiras visitas · '+tot('agendou').toLocaleString('pt-BR')+' agendamentos ('+tot('agendou_ads').toLocaleString('pt-BR')+' por anúncio) · '+tot('aceitou_jesus').toLocaleString('pt-BR')+' decisões · '+tot('oracao').toLocaleString('pt-BR')+' pedidos de oração · '+tot('batismo').toLocaleString('pt-BR')+' batismos. <b>Atenção:</b> "Aceitou Jesus" cobre até abr/2026 (contagem real da igreja, planilha da Jornada); de maio em diante ainda em levantamento. Os anúncios cessaram em junho — vale retomar.';
+  document.getElementById('semCallout').innerHTML='<b style="color:var(--ember2)">No ano:</b> '+tot('visitas').toLocaleString('pt-BR')+' primeiras visitas · '+tot('agendou').toLocaleString('pt-BR')+' agendamentos ('+tot('agendou_ads').toLocaleString('pt-BR')+' por anúncio) · '+tot('aceitou_jesus').toLocaleString('pt-BR')+' decisões · '+tot('oracao').toLocaleString('pt-BR')+' pedidos de oração · '+tot('batismo').toLocaleString('pt-BR')+' batismos. <b>Atenção:</b> "Aceitou Jesus" cobre até jul/2026 (contagem real da igreja, planilha unificada da Jornada). Os anúncios cessaram em junho — vale retomar.';
+
+  // ---- Aceitou Jesus por semana + eventos ----
+  let EV={}; try{const re=await fetch('eventos.json'); if(re.ok)EV=await re.json();}catch(e){}
+  const el2=document.getElementById('ajSemChart');
+  if(el2){
+   const EVC={cafe:'#38c172',feriado:'#ffcf5c',copa:'#e3452f',ferias:'#8a94a3',campanha:'#ff6a2b'};
+   const ptColor=S.map(s=>{const e=EV[s.date];return e?(EVC[e.t]||'#4aa3ff'):'#4aa3ff';});
+   const ptRad=S.map(s=>EV[s.date]?6:3);
+   new Chart(el2,{type:'line',data:{labels:S.map(s=>s.label),datasets:[{label:'Aceitou Jesus',
+     data:S.map(s=>s.aceitou_jesus||0),borderColor:'#38c172',borderWidth:2.5,tension:.3,
+     pointBackgroundColor:ptColor,pointBorderColor:'#0f1113',pointRadius:ptRad,pointHoverRadius:9,
+     backgroundColor:x=>{const g=x.chart.ctx.createLinearGradient(0,0,0,340);g.addColorStop(0,'rgba(56,193,114,.22)');g.addColorStop(1,'rgba(56,193,114,0)');return g;},fill:true}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false},
+      tooltip:{callbacks:{title:i=>'Semana de '+i[0].label,
+        label:i=>'  '+(i.raw||0).toLocaleString('pt-BR')+' decisões',
+        afterBody:i=>{const e=EV[S[i[0].dataIndex].date];return e?['','▶ '+e.l]:'';}}}},
+      scales:{y:{beginAtZero:true,grid:{color:'#2b3038'},ticks:{callback:v=>v.toLocaleString('pt-BR')}},x:{grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}}}}});
+   const mx=S.reduce((a,s)=>(s.aceitou_jesus||0)>(a.aceitou_jesus||0)?s:a);
+   const mn=S.filter(s=>s.aceitou_jesus>0).reduce((a,s)=>(s.aceitou_jesus)<(a.aceitou_jesus)?s:a,{aceitou_jesus:1e9});
+   const eMx=EV[mx.date],eMn=EV[mn.date];
+   document.getElementById('ajSemCallout').innerHTML='<b style="color:var(--kids)">Como ler:</b> o ponto colorido marca o que aconteceu na semana. Maior pico: <b>'+mx.label+' ('+(mx.aceitou_jesus||0)+')</b>'+(eMx?' — '+eMx.l:'')+'. Menor (com culto): <b>'+mn.label+' ('+mn.aceitou_jesus+')</b>'+(eMn?' — '+eMn.l:'')+'. Quedas em feriadões e semanas de Copa; picos costumam vir após campanhas e no retorno das férias.';
+  }
  }catch(e){}
 })();
 

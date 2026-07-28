@@ -158,6 +158,43 @@ def montar(base, wx, fatores, kids, funil):
         dados.append(row)
     return dados
 
+AJ_SHEET_ID = os.environ.get("AJ_SHEET_ID", "1bXCyP9Es6fwQL4swExizk-4u73hWGXkH")
+
+def buscar_aj(sheet_id):
+    """Le a planilha unificada de Aceitou Jesus (publica) e devolve {domingo: decisoes feitas no CULTO}.
+    Fail-safe: qualquer erro devolve {} e o robo mantem os valores de funil.json."""
+    try:
+        url = "https://docs.google.com/spreadsheets/d/%s/export?format=xlsx" % sheet_id
+        r = requests.get(url, timeout=90)
+        if r.status_code != 200 or b"<html" in r.content[:200].lower():
+            print("Aviso: planilha de Aceitou Jesus indisponivel (deixe como 'qualquer pessoa com o link: leitor'). Mantendo funil.json.")
+            return {}
+        wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
+        ws = None
+        for sn in wb.sheetnames:
+            if "unificada" in sn.lower():
+                ws = wb[sn]; break
+        if ws is None:
+            ws = wb[wb.sheetnames[0]]
+        agg = {}
+        it = ws.iter_rows(values_only=True); next(it, None)   # pula cabecalho
+        for row in it:
+            if not row or len(row) < 3:
+                continue
+            if str(row[0] or "").strip() != "Culto":            # so decisoes no culto viram serie semanal
+                continue
+            data = row[1]
+            if not isinstance(data, datetime.datetime):
+                continue
+            dd = data.date()
+            dom = (dd - datetime.timedelta(days=(dd.weekday() + 1) % 7)).isoformat()
+            agg[dom] = agg.get(dom, 0) + 1
+        print("Aceitou Jesus (culto) lido da planilha: %d semanas, %d decisoes." % (len(agg), sum(agg.values())))
+        return agg
+    except Exception as e:
+        print("Aviso: falha ao ler planilha de Aceitou Jesus (%s). Mantendo funil.json." % e)
+        return {}
+
 def main():
     print("Baixando a planilha do Google...")
     base = ler_planilha(baixar_xlsx())
@@ -179,9 +216,28 @@ def main():
     fupath = os.path.join(AQUI, "funil.json")  # primeira vez / aceitou Jesus (so quantidades)
     if os.path.exists(fupath):
         funil = json.load(open(fupath, encoding="utf-8"))
+    # --- Aceitou Jesus automatico: le a planilha viva e sobrepoe funil.json (fev em diante) ---
+    aj_dom = buscar_aj(AJ_SHEET_ID)
+    for dom, n in aj_dom.items():
+        if dom >= "2026-02-01":
+            funil.setdefault(dom, {})["aj"] = n
     dados = montar(base, wx, fatores, kids, funil)
     with open(SAIDA, "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=1)
+    # --- atualiza tambem a serie semanal (apenas o campo aceitou_jesus) ---
+    if aj_dom:
+        sempath = os.path.join(RAIZ, "funil_semanal.json")
+        if os.path.exists(sempath):
+            try:
+                sem = json.load(open(sempath, encoding="utf-8"))
+                for s in sem:
+                    if s.get("date", "") >= "2026-02-01":
+                        s["aceitou_jesus"] = aj_dom.get(s["date"], 0)
+                with open(sempath, "w", encoding="utf-8") as f:
+                    json.dump(sem, f, ensure_ascii=False, indent=1)
+                print("funil_semanal.json: aceitou_jesus atualizado a partir da planilha viva.")
+            except Exception as e:
+                print("Aviso: nao consegui atualizar funil_semanal.json (%s)." % e)
     print("OK: dados.json com %d domingos, total %d pessoas." %
           (len(dados), sum(d['total'] for d in dados)))
 

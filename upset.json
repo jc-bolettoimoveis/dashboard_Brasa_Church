@@ -2,7 +2,7 @@
  "sets": [
   {
    "n": "Eklesia",
-   "v": 14059
+   "v": 14118
   },
   {
    "n": "Boas-vindas",
@@ -10,15 +10,15 @@
   },
   {
    "n": "Aceitou Jesus",
-   "v": 6785
+   "v": 8967
   },
   {
    "n": "Trilha",
-   "v": 3037
+   "v": 3083
   },
   {
    "n": "Batismo",
-   "v": 600
+   "v": 613
   },
   {
    "n": "Agendou",
@@ -26,7 +26,7 @@
   },
   {
    "n": "ADS (lead)",
-   "v": 2861
+   "v": 2862
   },
   {
    "n": "Oração",
@@ -38,65 +38,59 @@
    "frentes": [
     "Eklesia"
    ],
-   "n": 9339
-  },
-  {
-   "frentes": [
-    "Boas-vindas"
-   ],
-   "n": 5309
+   "n": 9290
   },
   {
    "frentes": [
     "Aceitou Jesus"
    ],
-   "n": 4615
+   "n": 5091
+  },
+  {
+   "frentes": [
+    "Boas-vindas"
+   ],
+   "n": 4154
   },
   {
    "frentes": [
     "Eklesia",
     "Trilha"
    ],
-   "n": 1791
-  },
-  {
-   "frentes": [
-    "ADS (lead)"
-   ],
-   "n": 1463
-  },
-  {
-   "frentes": [
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 695
-  },
-  {
-   "frentes": [
-    "Agendou"
-   ],
-   "n": 669
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Aceitou Jesus"
-   ],
-   "n": 658
+   "n": 1781
   },
   {
    "frentes": [
     "Boas-vindas",
     "Aceitou Jesus"
    ],
-   "n": 586
+   "n": 1741
   },
   {
    "frentes": [
-    "Oração"
+    "ADS (lead)"
    ],
-   "n": 314
+   "n": 1462
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Aceitou Jesus"
+   ],
+   "n": 718
+  },
+  {
+   "frentes": [
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 691
+  },
+  {
+   "frentes": [
+    "Agendou"
+   ],
+   "n": 659
   },
   {
    "frentes": [
@@ -104,66 +98,89 @@
     "Aceitou Jesus",
     "Trilha"
    ],
-   "n": 272
+   "n": 316
+  },
+  {
+   "frentes": [
+    "Oração"
+   ],
+   "n": 312
   },
   {
    "frentes": [
     "Eklesia",
-    "Boas-vindas"
+    "Batismo"
    ],
-   "n": 230
+   "n": 201
   },
   {
    "frentes": [
     "Boas-vindas",
     "Agendou"
    ],
-   "n": 218
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Batismo"
-   ],
-   "n": 206
+   "n": 171
   },
   {
    "frentes": [
     "Eklesia",
     "Boas-vindas",
+    "Aceitou Jesus"
+   ],
+   "n": 151
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
     "Trilha"
    ],
-   "n": 162
+   "n": 146
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas"
+   ],
+   "n": 146
   },
   {
    "frentes": [
     "Eklesia",
     "Trilha",
     "Batismo"
-   ],
-   "n": 147
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Trilha",
-    "Oração"
    ],
    "n": 145
   },
   {
    "frentes": [
+    "Eklesia",
+    "Trilha",
+    "Oração"
+   ],
+   "n": 139
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "ADS (lead)"
+   ],
+   "n": 110
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Trilha"
+   ],
+   "n": 82
+  },
+  {
+   "frentes": [
     "Boas-vindas",
     "Oração"
    ],
-   "n": 114
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "ADS (lead)"
-   ],
-   "n": 111
+   "n": 81
   },
   {
    "frentes": [
@@ -171,32 +188,23 @@
     "Agendou",
     "ADS (lead)"
    ],
-   "n": 101
+   "n": 79
   },
   {
    "frentes": [
-    "Eklesia",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 71
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus"
-   ],
-   "n": 67
-  },
-  {
-   "frentes": [
-    "Eklesia",
     "Boas-vindas",
     "Aceitou Jesus",
-    "Trilha"
+    "Agendou"
    ],
-   "n": 66
+   "n": 74
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 70
   },
   {
    "frentes": [
@@ -216,18 +224,20 @@
   {
    "frentes": [
     "Eklesia",
-    "Agendou"
-   ],
-   "n": 45
-  },
-  {
-   "frentes": [
-    "Eklesia",
     "Boas-vindas",
+    "Aceitou Jesus",
     "Trilha",
     "Oração"
    ],
-   "n": 45
+   "n": 54
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Oração"
+   ],
+   "n": 54
   },
   {
    "frentes": [
@@ -236,71 +246,69 @@
     "Trilha",
     "Oração"
    ],
-   "n": 45
+   "n": 51
   },
   {
    "frentes": [
     "Eklesia",
     "Aceitou Jesus",
     "Batismo"
+   ],
+   "n": 48
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 43
+  },
+  {
+   "frentes": [
+    "Aceitou Jesus",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 42
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Agendou"
    ],
    "n": 41
   },
   {
    "frentes": [
-    "Aceitou Jesus",
-    "ADS (lead)"
-   ],
-   "n": 39
-  },
-  {
-   "frentes": [
-    "Aceitou Jesus",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 38
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Trilha",
-    "Oração"
-   ],
-   "n": 32
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Trilha",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 31
-  },
-  {
-   "frentes": [
     "Eklesia",
     "Aceitou Jesus",
     "Trilha",
     "Batismo"
    ],
-   "n": 27
+   "n": 40
   },
   {
    "frentes": [
-    "Boas-vindas",
+    "Aceitou Jesus",
+    "ADS (lead)"
+   ],
+   "n": 40
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Trilha",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 29
+  },
+  {
+   "frentes": [
     "Aceitou Jesus",
     "Agendou"
-   ],
-   "n": 27
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "ADS (lead)"
    ],
    "n": 24
   },
@@ -308,71 +316,49 @@
    "frentes": [
     "Eklesia",
     "Boas-vindas",
-    "Agendou"
-   ],
-   "n": 22
-  },
-  {
-   "frentes": [
-    "Eklesia",
     "Aceitou Jesus",
-    "ADS (lead)"
-   ],
-   "n": 22
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Oração"
-   ],
-   "n": 22
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Oração"
-   ],
-   "n": 21
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 21
-  },
-  {
-   "frentes": [
+    "Trilha",
     "Batismo"
    ],
-   "n": 21
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Batismo"
-   ],
-   "n": 19
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 18
+   "n": 23
   },
   {
    "frentes": [
     "Eklesia",
     "Boas-vindas",
     "Trilha",
+    "Oração"
+   ],
+   "n": 23
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Aceitou Jesus",
+    "ADS (lead)"
+   ],
+   "n": 23
+  },
+  {
+   "frentes": [
+    "Batismo"
+   ],
+   "n": 21
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Batismo"
+   ],
+   "n": 20
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
     "Agendou"
    ],
    "n": 18
@@ -381,10 +367,46 @@
    "frentes": [
     "Eklesia",
     "Boas-vindas",
+    "Aceitou Jesus",
     "Trilha",
-    "Batismo"
+    "Agendou"
    ],
-   "n": 18
+   "n": 17
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 17
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Oração"
+   ],
+   "n": 17
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Aceitou Jesus",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 16
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "ADS (lead)"
+   ],
+   "n": 16
   },
   {
    "frentes": [
@@ -396,25 +418,53 @@
   },
   {
    "frentes": [
-    "Eklesia",
     "Aceitou Jesus",
-    "Agendou",
-    "ADS (lead)"
+    "Oração"
    ],
    "n": 15
   },
   {
    "frentes": [
+    "Eklesia",
     "Aceitou Jesus",
-    "Agendou"
+    "Trilha",
+    "Agendou",
+    "ADS (lead)"
    ],
    "n": 14
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Oração"
+   ],
+   "n": 13
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "ADS (lead)"
+   ],
+   "n": 13
   },
   {
    "frentes": [
     "Trilha"
    ],
-   "n": 14
+   "n": 13
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Trilha",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 12
   },
   {
    "frentes": [
@@ -422,7 +472,33 @@
     "Trilha",
     "Agendou"
    ],
-   "n": 13
+   "n": 12
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 10
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Agendou"
+   ],
+   "n": 10
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Trilha",
+    "Agendou"
+   ],
+   "n": 10
   },
   {
    "frentes": [
@@ -431,58 +507,12 @@
     "Batismo",
     "Oração"
    ],
-   "n": 13
-  },
-  {
-   "frentes": [
-    "Aceitou Jesus",
-    "Oração"
-   ],
-   "n": 13
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Trilha",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 12
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Trilha",
-    "Batismo"
-   ],
-   "n": 12
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Aceitou Jesus",
-    "Trilha",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 12
+   "n": 10
   },
   {
    "frentes": [
     "Boas-vindas",
     "Agendou",
-    "Oração"
-   ],
-   "n": 11
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Agendou",
-    "ADS (lead)",
     "Oração"
    ],
    "n": 10
@@ -490,37 +520,20 @@
   {
    "frentes": [
     "Eklesia",
+    "Aceitou Jesus",
+    "Trilha",
+    "Batismo",
+    "Oração"
+   ],
+   "n": 9
+  },
+  {
+   "frentes": [
+    "Eklesia",
     "Boas-vindas",
     "Aceitou Jesus",
     "Trilha",
-    "Agendou"
-   ],
-   "n": 9
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Batismo"
-   ],
-   "n": 9
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
     "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 9
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
     "Oração"
    ],
    "n": 8
@@ -529,6 +542,31 @@
    "frentes": [
     "Eklesia",
     "Boas-vindas",
+    "Batismo"
+   ],
+   "n": 8
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Aceitou Jesus",
+    "Trilha",
+    "ADS (lead)"
+   ],
+   "n": 7
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Trilha",
+    "Batismo"
+   ],
+   "n": 7
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
     "Agendou",
     "ADS (lead)",
     "Oração"
@@ -537,30 +575,78 @@
   },
   {
    "frentes": [
-    "Eklesia",
     "Boas-vindas",
+    "Aceitou Jesus",
+    "Agendou",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 6
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Trilha",
     "Agendou",
     "Oração"
    ],
-   "n": 7
+   "n": 5
   },
   {
    "frentes": [
     "Eklesia",
     "Boas-vindas",
+    "Trilha",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 5
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Trilha",
+    "Batismo",
+    "Oração"
+   ],
+   "n": 5
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Agendou",
+    "Oração"
+   ],
+   "n": 5
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Agendou",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 5
+  },
+  {
+   "frentes": [
+    "Eklesia",
     "Aceitou Jesus",
     "Agendou"
    ],
-   "n": 6
+   "n": 5
   },
   {
    "frentes": [
     "Eklesia",
-    "Aceitou Jesus",
-    "Trilha",
+    "Batismo",
     "ADS (lead)"
    ],
-   "n": 6
+   "n": 4
   },
   {
    "frentes": [
@@ -568,10 +654,11 @@
     "Boas-vindas",
     "Aceitou Jesus",
     "Trilha",
+    "Batismo",
     "Agendou",
-    "Oração"
+    "ADS (lead)"
    ],
-   "n": 6
+   "n": 4
   },
   {
    "frentes": [
@@ -582,63 +669,7 @@
     "ADS (lead)",
     "Oração"
    ],
-   "n": 6
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Aceitou Jesus",
-    "Trilha",
-    "Batismo",
-    "Oração"
-   ],
-   "n": 6
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Batismo",
-    "ADS (lead)"
-   ],
-   "n": 5
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Trilha",
-    "Agendou",
-    "Oração"
-   ],
-   "n": 5
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Trilha",
-    "Batismo",
-    "Oração"
-   ],
-   "n": 5
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Trilha",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 5
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "ADS (lead)"
-   ],
-   "n": 5
+   "n": 4
   },
   {
    "frentes": [
@@ -663,9 +694,33 @@
   {
    "frentes": [
     "Eklesia",
+    "Boas-vindas",
+    "Agendou",
+    "Oração"
+   ],
+   "n": 4
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
     "Trilha",
     "Batismo",
-    "Agendou"
+    "Agendou",
+    "Oração"
+   ],
+   "n": 4
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Trilha",
+    "Agendou",
+    "ADS (lead)",
+    "Oração"
    ],
    "n": 4
   },
@@ -676,115 +731,105 @@
     "Batismo"
    ],
    "n": 4
-  },
-  {
-   "frentes": [
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 4
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Aceitou Jesus",
-    "Batismo",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 3
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Trilha",
-    "Batismo",
-    "Agendou",
-    "Oração"
-   ],
-   "n": 3
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Agendou",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 3
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Trilha",
-    "Batismo",
-    "ADS (lead)"
-   ],
-   "n": 3
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Trilha",
-    "Batismo",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 3
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Trilha",
-    "Batismo",
-    "Agendou",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 3
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Trilha",
-    "Batismo",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 3
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Trilha",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 3
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Agendou",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 3
   },
   {
    "frentes": [
     "Aceitou Jesus",
     "Trilha"
    ],
+   "n": 4
+  },
+  {
+   "frentes": [
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 4
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Aceitou Jesus",
+    "Batismo",
+    "Agendou",
+    "ADS (lead)"
+   ],
    "n": 3
   },
   {
    "frentes": [
+    "Eklesia",
+    "Agendou",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 3
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Agendou",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 3
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Trilha",
+    "Batismo",
+    "ADS (lead)"
+   ],
+   "n": 3
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Trilha",
+    "Batismo",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 3
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Trilha",
+    "Batismo",
+    "Agendou",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 3
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Trilha",
+    "Batismo",
+    "Agendou"
+   ],
+   "n": 3
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Trilha",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 3
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "Aceitou Jesus",
     "Agendou",
     "Oração"
    ],
@@ -811,18 +856,6 @@
   {
    "frentes": [
     "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Trilha",
-    "Batismo",
-    "Agendou",
-    "ADS (lead)"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Eklesia",
     "ADS (lead)",
     "Oração"
    ],
@@ -840,6 +873,9 @@
   {
    "frentes": [
     "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Trilha",
     "Batismo",
     "Agendou"
    ],
@@ -856,25 +892,6 @@
   {
    "frentes": [
     "Eklesia",
-    "Boas-vindas",
-    "Trilha",
-    "ADS (lead)"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Agendou",
-    "Oração"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Eklesia",
     "Aceitou Jesus",
     "Trilha",
     "ADS (lead)",
@@ -885,19 +902,9 @@
   {
    "frentes": [
     "Eklesia",
-    "Boas-vindas",
+    "Aceitou Jesus",
     "Batismo",
-    "Oração"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Trilha",
-    "Agendou",
-    "Oração"
+    "ADS (lead)"
    ],
    "n": 2
   },
@@ -912,24 +919,9 @@
   {
    "frentes": [
     "Eklesia",
-    "Boas-vindas",
     "Aceitou Jesus",
     "Trilha",
-    "Batismo",
-    "Agendou",
-    "Oração"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Trilha",
-    "Agendou",
-    "ADS (lead)",
-    "Oração"
+    "Agendou"
    ],
    "n": 2
   },
@@ -941,15 +933,6 @@
     "Batismo",
     "Agendou",
     "ADS (lead)"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "ADS (lead)",
-    "Oração"
    ],
    "n": 2
   },
@@ -991,190 +974,254 @@
    "frentes": [
     "Boas-vindas",
     "Aceitou Jesus",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 2
+  },
+  {
+   "frentes": [
+    "Aceitou Jesus",
     "Agendou",
     "Oração"
    ],
    "n": 2
+  },
+  {
+   "frentes": [
+    "Aceitou Jesus",
+    "Batismo",
+    "ADS (lead)"
+   ],
+   "n": 2
+  },
+  {
+   "frentes": [
+    "Aceitou Jesus",
+    "Batismo"
+   ],
+   "n": 2
+  },
+  {
+   "frentes": [
+    "Agendou",
+    "Oração"
+   ],
+   "n": 2
+  },
+  {
+   "frentes": [
+    "Batismo",
+    "Oração"
+   ],
+   "n": 2
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Trilha",
+    "Batismo",
+    "Agendou",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Aceitou Jesus",
+    "Batismo",
+    "Agendou"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Trilha",
+    "ADS (lead)"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Batismo",
+    "Agendou"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Trilha",
+    "Batismo",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Batismo",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Trilha",
+    "Agendou",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Trilha",
+    "ADS (lead)"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Batismo",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Trilha",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Aceitou Jesus",
+    "Trilha",
+    "Agendou",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Boas-vindas",
+    "Trilha",
+    "Batismo",
+    "Agendou",
+    "ADS (lead)"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Aceitou Jesus",
+    "Agendou",
+    "ADS (lead)",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Eklesia",
+    "Aceitou Jesus",
+    "Trilha",
+    "Batismo",
+    "Agendou"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Batismo",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "Batismo",
+    "Agendou"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "Aceitou Jesus",
+    "Trilha"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "Batismo",
+    "Oração"
+   ],
+   "n": 1
+  },
+  {
+   "frentes": [
+    "Boas-vindas",
+    "Batismo",
+    "ADS (lead)"
+   ],
+   "n": 1
   },
   {
    "frentes": [
     "Boas-vindas",
     "Trilha"
    ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Aceitou Jesus",
-    "Batismo",
-    "ADS (lead)"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Aceitou Jesus",
-    "Batismo"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Batismo",
-    "Oração"
-   ],
-   "n": 2
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Agendou",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Trilha",
-    "Batismo",
-    "Agendou"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Trilha",
-    "Batismo",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Aceitou Jesus",
-    "Agendou"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Trilha",
-    "Agendou",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Aceitou Jesus",
-    "Trilha",
-    "Agendou"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Trilha",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Aceitou Jesus",
-    "Trilha",
-    "Agendou",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Aceitou Jesus",
-    "Batismo",
-    "ADS (lead)"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Aceitou Jesus",
-    "Agendou",
-    "ADS (lead)",
-    "Oração"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Eklesia",
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Trilha",
-    "Batismo",
-    "Agendou"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Aceitou Jesus",
-    "Batismo",
-    "Oração"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Batismo",
-    "Agendou"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Batismo",
-    "Oração"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Boas-vindas",
-    "Batismo",
-    "ADS (lead)"
-   ],
    "n": 1
   },
   {
@@ -1183,14 +1230,6 @@
     "Batismo",
     "Agendou",
     "ADS (lead)"
-   ],
-   "n": 1
-  },
-  {
-   "frentes": [
-    "Aceitou Jesus",
-    "Agendou",
-    "Oração"
    ],
    "n": 1
   },
@@ -1251,10 +1290,10 @@
   }
  ],
  "resumo": {
-  "so_uma_frente": 21744,
-  "varias_frentes": 6706,
-  "so_crm": 18257,
-  "com_frente": 28450,
-  "total_base": 46707
+  "so_uma_frente": 21002,
+  "varias_frentes": 7983,
+  "so_crm": 18238,
+  "com_frente": 28985,
+  "total_base": 47223
  }
 }

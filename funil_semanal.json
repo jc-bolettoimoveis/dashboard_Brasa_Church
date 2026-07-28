@@ -50,7 +50,7 @@
   "visitas": 199,
   "agendou": 55,
   "agendou_ads": 10,
-  "aceitou_jesus": 67,
+  "aceitou_jesus": 265,
   "oracao": 9,
   "batismo": 1
  },
@@ -61,7 +61,7 @@
   "visitas": 203,
   "agendou": 49,
   "agendou_ads": 8,
-  "aceitou_jesus": 44,
+  "aceitou_jesus": 193,
   "oracao": 44,
   "batismo": 0
  },
@@ -138,7 +138,7 @@
   "visitas": 205,
   "agendou": 37,
   "agendou_ads": 0,
-  "aceitou_jesus": 75,
+  "aceitou_jesus": 74,
   "oracao": 12,
   "batismo": 1
  },
@@ -149,7 +149,7 @@
   "visitas": 218,
   "agendou": 50,
   "agendou_ads": 0,
-  "aceitou_jesus": 88,
+  "aceitou_jesus": 87,
   "oracao": 11,
   "batismo": 0
  },
@@ -182,7 +182,7 @@
   "visitas": 167,
   "agendou": 45,
   "agendou_ads": 0,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 123,
   "oracao": 16,
   "batismo": 0
  },
@@ -193,7 +193,7 @@
   "visitas": 126,
   "agendou": 38,
   "agendou_ads": 0,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 33,
   "oracao": 6,
   "batismo": 0
  },
@@ -215,7 +215,7 @@
   "visitas": 0,
   "agendou": 99,
   "agendou_ads": 73,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 130,
   "oracao": 1,
   "batismo": 0
  },
@@ -226,7 +226,7 @@
   "visitas": 223,
   "agendou": 73,
   "agendou_ads": 37,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 82,
   "oracao": 14,
   "batismo": 0
  },
@@ -237,7 +237,7 @@
   "visitas": 114,
   "agendou": 79,
   "agendou_ads": 46,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 69,
   "oracao": 10,
   "batismo": 0
  },
@@ -248,7 +248,7 @@
   "visitas": 267,
   "agendou": 72,
   "agendou_ads": 45,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 122,
   "oracao": 13,
   "batismo": 0
  },
@@ -259,7 +259,7 @@
   "visitas": 213,
   "agendou": 108,
   "agendou_ads": 0,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 77,
   "oracao": 10,
   "batismo": 2
  },
@@ -270,7 +270,7 @@
   "visitas": 235,
   "agendou": 134,
   "agendou_ads": 0,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 90,
   "oracao": 18,
   "batismo": 0
  },
@@ -281,7 +281,7 @@
   "visitas": 162,
   "agendou": 33,
   "agendou_ads": 0,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 66,
   "oracao": 11,
   "batismo": 0
  },
@@ -303,7 +303,7 @@
   "visitas": 278,
   "agendou": 47,
   "agendou_ads": 0,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 160,
   "oracao": 11,
   "batismo": 0
  },
@@ -314,8 +314,19 @@
   "visitas": 135,
   "agendou": 16,
   "agendou_ads": 0,
-  "aceitou_jesus": 0,
+  "aceitou_jesus": 56,
   "oracao": 5,
   "batismo": 1
+ },
+ {
+  "date": "2026-07-26",
+  "label": "26/07",
+  "publico": 0,
+  "visitas": 0,
+  "agendou": 0,
+  "agendou_ads": 0,
+  "aceitou_jesus": 65,
+  "oracao": 0,
+  "batismo": 0
  }
 ]
