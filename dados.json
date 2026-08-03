@@ -1702,11 +1702,11 @@
   "label": "19/07",
   "mes": "Jul",
   "venue": "Teatro",
-  "total": 3925,
+  "total": 3951,
   "services": {
    "20": 1248,
    "18": 563,
-   "9": 943,
+   "9": 969,
    "11": 1171
   },
   "holiday": "",
@@ -1763,7 +1763,7 @@
    "20": 50
   },
   "kidsVis": 2,
-  "familia": 8.0,
+  "familia": 7.9,
   "pv": 135,
   "aj": 56
  },
@@ -1826,5 +1826,64 @@
    }
   },
   "aj": 65
+ },
+ {
+  "date": "2026-08-02",
+  "label": "02/08",
+  "mes": "Ago",
+  "venue": "Teatro",
+  "total": 4438,
+  "services": {
+   "9": 723,
+   "11": 1005,
+   "16": 1149,
+   "18": 1020,
+   "20": 541
+  },
+  "holiday": "",
+  "wc": "",
+  "note": "",
+  "wx": {
+   "9": {
+    "temp": 17.0,
+    "app": 18.4,
+    "wind": 1.7,
+    "precip": 0,
+    "cloud": 100,
+    "cond": "Nublado"
+   },
+   "11": {
+    "temp": 19.0,
+    "app": 19.6,
+    "wind": 5.9,
+    "precip": 0,
+    "cloud": 100,
+    "cond": "Nublado"
+   },
+   "16": {
+    "temp": 20.9,
+    "app": 21.3,
+    "wind": 9.0,
+    "precip": 0,
+    "cloud": 88,
+    "cond": "Nublado"
+   },
+   "18": {
+    "temp": 18.1,
+    "app": 17.4,
+    "wind": 15.5,
+    "precip": 0,
+    "cloud": 69,
+    "cond": "Parcial"
+   },
+   "20": {
+    "temp": 15.9,
+    "app": 15.2,
+    "wind": 14.1,
+    "precip": 0,
+    "cloud": 99,
+    "cond": "Nublado"
+   }
+  }
  }
 ]
