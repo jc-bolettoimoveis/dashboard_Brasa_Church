@@ -2003,5 +2003,62 @@
     "cond": "Parcial"
    }
   }
+ },
+ {
+  "date": "2026-08-30",
+  "label": "30/08",
+  "mes": "Ago",
+  "venue": "Teatro",
+  "total": 1816,
+  "services": {
+   "9": 581,
+   "11": 867,
+   "20": 368
+  },
+  "holiday": "",
+  "wc": "",
+  "note": "",
+  "wx": {
+   "9": {
+    "temp": 18.2,
+    "app": 17.6,
+    "wind": 18.2,
+    "precip": 0,
+    "cloud": 69,
+    "cond": "Parcial"
+   },
+   "11": {
+    "temp": 20.9,
+    "app": 19.3,
+    "wind": 22.5,
+    "precip": 0,
+    "cloud": 88,
+    "cond": "Nublado"
+   },
+   "16": {
+    "temp": 19.0,
+    "app": 17.5,
+    "wind": 21.7,
+    "precip": 0.2,
+    "cloud": 84,
+    "cond": "Garoa"
+   },
+   "18": {
+    "temp": 17.6,
+    "app": 16.5,
+    "wind": 18.8,
+    "precip": 0,
+    "cloud": 100,
+    "cond": "Nublado"
+   },
+   "20": {
+    "temp": 17.0,
+    "app": 15.8,
+    "wind": 20.3,
+    "precip": 0,
+    "cloud": 47,
+    "cond": "Parcial"
+   }
+  }
  }
 ]
