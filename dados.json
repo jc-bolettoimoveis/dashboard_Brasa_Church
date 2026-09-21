@@ -2178,5 +2178,64 @@
     "cond": "Parcial"
    }
   }
+ },
+ {
+  "date": "2026-09-20",
+  "label": "20/09",
+  "mes": "Set",
+  "venue": "Teatro",
+  "total": 3910,
+  "services": {
+   "16": 848,
+   "18": 939,
+   "20": 635,
+   "11": 801,
+   "9": 687
+  },
+  "holiday": "",
+  "wc": "",
+  "note": "",
+  "wx": {
+   "9": {
+    "temp": 20.1,
+    "app": 21.2,
+    "wind": 13.9,
+    "precip": 0,
+    "cloud": 73,
+    "cond": "Nublado"
+   },
+   "11": {
+    "temp": 23.3,
+    "app": 24.2,
+    "wind": 17.1,
+    "precip": 0,
+    "cloud": 42,
+    "cond": "Parcial"
+   },
+   "16": {
+    "temp": 27.6,
+    "app": 29.7,
+    "wind": 11.7,
+    "precip": 0,
+    "cloud": 5,
+    "cond": "Sol"
+   },
+   "18": {
+    "temp": 25.4,
+    "app": 29.8,
+    "wind": 1.5,
+    "precip": 0,
+    "cloud": 13,
+    "cond": "Sol"
+   },
+   "20": {
+    "temp": 22.8,
+    "app": 25.6,
+    "wind": 9.0,
+    "precip": 0,
+    "cloud": 15,
+    "cond": "Sol"
+   }
+  }
  }
 ]
