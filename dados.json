@@ -2243,13 +2243,13 @@
   "label": "27/09",
   "mes": "Set",
   "venue": "Teatro",
-  "total": 4380,
+  "total": 4167,
   "services": {
-   "9": 748,
-   "11": 1091,
-   "16": 1141,
-   "18": 830,
-   "20": 570
+   "9": 738,
+   "11": 1051,
+   "16": 935,
+   "18": 843,
+   "20": 600
   },
   "holiday": "",
   "wc": "",
@@ -2294,6 +2294,65 @@
     "precip": 0.3,
     "cloud": 97,
     "cond": "Garoa"
+   }
+  }
+ },
+ {
+  "date": "2026-10-04",
+  "label": "04/10",
+  "mes": "Out",
+  "venue": "Teatro",
+  "total": 3805,
+  "services": {
+   "9": 764,
+   "11": 736,
+   "16": 923,
+   "18": 908,
+   "20": 474
+  },
+  "holiday": "",
+  "wc": "",
+  "note": "",
+  "wx": {
+   "9": {
+    "temp": 17.6,
+    "app": 17.7,
+    "wind": 11.7,
+    "precip": 0,
+    "cloud": 100,
+    "cond": "Nublado"
+   },
+   "11": {
+    "temp": 19.3,
+    "app": 19.7,
+    "wind": 7.6,
+    "precip": 0.1,
+    "cloud": 100,
+    "cond": "Garoa"
+   },
+   "16": {
+    "temp": 18.7,
+    "app": 18.4,
+    "wind": 12.8,
+    "precip": 0.1,
+    "cloud": 97,
+    "cond": "Garoa"
+   },
+   "18": {
+    "temp": 17.2,
+    "app": 17.5,
+    "wind": 7.3,
+    "precip": 0,
+    "cloud": 98,
+    "cond": "Nublado"
+   },
+   "20": {
+    "temp": 15.8,
+    "app": 15.8,
+    "wind": 8.5,
+    "precip": 0,
+    "cloud": 99,
+    "cond": "Nublado"
    }
   }
  }
