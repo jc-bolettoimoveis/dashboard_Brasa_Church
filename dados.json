@@ -2355,5 +2355,64 @@
     "cond": "Nublado"
    }
   }
+ },
+ {
+  "date": "2026-11-15",
+  "label": "15/11",
+  "mes": "Nov",
+  "venue": "Teatro",
+  "total": 4107,
+  "services": {
+   "20": 593,
+   "18": 1225,
+   "16": 795,
+   "11": 849,
+   "9": 645
+  },
+  "holiday": "",
+  "wc": "",
+  "note": "",
+  "wx": {
+   "9": {
+    "temp": 25.6,
+    "app": 30.1,
+    "wind": 1.6,
+    "precip": 0.3,
+    "cloud": 61,
+    "cond": "Garoa"
+   },
+   "11": {
+    "temp": 25.7,
+    "app": 29.4,
+    "wind": 13.2,
+    "precip": 0.2,
+    "cloud": 27,
+    "cond": "Garoa"
+   },
+   "16": {
+    "temp": 27.5,
+    "app": 28.9,
+    "wind": 15.2,
+    "precip": 0.1,
+    "cloud": 16,
+    "cond": "Garoa"
+   },
+   "18": {
+    "temp": 25.6,
+    "app": 27.1,
+    "wind": 12.2,
+    "precip": 0,
+    "cloud": 5,
+    "cond": "Sol"
+   },
+   "20": {
+    "temp": 22.4,
+    "app": 24.1,
+    "wind": 11.7,
+    "precip": 0,
+    "cloud": 2,
+    "cond": "Sol"
+   }
+  }
  }
 ]
