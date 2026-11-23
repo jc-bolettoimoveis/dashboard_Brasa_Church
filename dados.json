@@ -2414,5 +2414,64 @@
     "cond": "Sol"
    }
   }
+ },
+ {
+  "date": "2026-11-22",
+  "label": "22/11",
+  "mes": "Nov",
+  "venue": "Teatro",
+  "total": 2848,
+  "services": {
+   "9": 450,
+   "11": 679,
+   "16": 596,
+   "18": 667,
+   "20": 456
+  },
+  "holiday": "",
+  "wc": "",
+  "note": "",
+  "wx": {
+   "9": {
+    "temp": 20.9,
+    "app": 22.6,
+    "wind": 5.3,
+    "precip": 0,
+    "cloud": 95,
+    "cond": "Nublado"
+   },
+   "11": {
+    "temp": 24.8,
+    "app": 29.3,
+    "wind": 4.2,
+    "precip": 0,
+    "cloud": 88,
+    "cond": "Nublado"
+   },
+   "16": {
+    "temp": 27.6,
+    "app": 29.5,
+    "wind": 7.0,
+    "precip": 0,
+    "cloud": 98,
+    "cond": "Nublado"
+   },
+   "18": {
+    "temp": 26.2,
+    "app": 28.4,
+    "wind": 6.5,
+    "precip": 0,
+    "cloud": 25,
+    "cond": "Sol"
+   },
+   "20": {
+    "temp": 23.7,
+    "app": 25.8,
+    "wind": 8.8,
+    "precip": 0,
+    "cloud": 8,
+    "cond": "Sol"
+   }
+  }
  }
 ]
